@@ -1,0 +1,31 @@
+name: Check site
+
+# Runs tools/check_site.py (links, buy buttons, Open Graph URLs) and its
+# tests on every pull request and push to main. --online also fetches each
+# external link; a link to a place we control that doesn't answer fails.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check the site
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 tools/check_site.py --online
+
+      - name: Test the check
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 tools/test_check_site.py

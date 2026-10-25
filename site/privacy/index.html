@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy · Chi Rho Code LLC</title>
+    <meta name="description" content="What this website and Server Sanctuary collect: the site has no analytics, cookies or trackers; the app sends Polar only what a licence check needs; Polar handles payments as merchant of record.">
+    <meta name="theme-color" content="#0e1113">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Chi Rho Code LLC">
+    <meta property="og:title" content="Privacy · Chi Rho Code LLC">
+    <meta property="og:description" content="No analytics, cookies or trackers on this site; the app sends Polar only what a licence check needs.">
+    <!-- Open Graph needs absolute URLs; they name the final domain (docs/MAINTENANCE.md). -->
+    <meta property="og:url" content="https://chirhocode.com/privacy/">
+    <meta property="og:image" content="https://chirhocode.com/assets/og-server-sanctuary.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Server Sanctuary's Servers screen in a terminal: a Valheim server marked UP with its start checklist done, beside a stopped Palworld server">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="../assets/mark.svg">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="../">
+                <img src="../assets/mark.svg" alt="" width="32" height="32">
+                <span>Chi Rho Code LLC</span>
+            </a>
+            <nav class="site-nav" aria-label="Main">
+                <ul>
+                    <li><a href="../server-sanctuary/">Server Sanctuary</a></li>
+                    <li><a href="https://tossbaws.github.io/gospel-getter/">Gospel Getter</a></li>
+                    <li><a href="../#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <article class="wrap narrow prose" aria-labelledby="page-title">
+            <h1 id="page-title">Privacy</h1>
+            <p class="muted">Last updated 25 October 2026.</p>
+
+            <h2 id="site">This website</h2>
+            <ul>
+                <li>No analytics, no cookies and no trackers. The pages have no scripts, and every font, image and stylesheet is served from this site, so your browser asks no one else for anything.</li>
+                <li>The site is hosted on GitHub Pages. To serve the pages, GitHub receives the usual details of each request, such as your IP address, under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>. We don’t get those logs.</li>
+            </ul>
+
+            <h2 id="app">Server Sanctuary</h2>
+            <ul>
+                <li>When it checks a licence (from version 1.0: when it starts and once a day), the app sends Polar only the licence key, the machine’s host name as a label, a one-way hash of the machine’s ID, and the app’s version. It sends nothing about your servers, players or worlds.</li>
+                <li>The app has no analytics or telemetry. What it keeps about your servers and players (ban lists, the Players screen) stays on your machine.</li>
+                <li>Other network use, none of it to us: to show players your public address, the app sends one STUN request to Cloudflare (or Google, if Cloudflare doesn’t answer) and keeps the answer in memory only; Podman downloads each game’s container image; and the game servers download their games from Steam.</li>
+            </ul>
+
+            <h2 id="payments">Payments</h2>
+            <ul>
+                <li>Polar (polar.sh) is the merchant of record: it takes the payment, handles tax and sends the receipt, under <a href="https://polar.sh/legal/privacy-policy">Polar’s privacy policy</a>. Your card details go to Polar, never to us.</li>
+                <li>We can see your order and the email you bought with, so we can help with your licence.</li>
+            </ul>
+
+            <h2 id="email">Email</h2>
+            <p>If you write to <a href="mailto:help@chirhocode.com">help@chirhocode.com</a>, we use your address and message only to answer you. Our mail is hosted by Proton Mail.</p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <ul>
+                <li>© Chi Rho Code LLC</li>
+                <li><a href="mailto:help@chirhocode.com">help@chirhocode.com</a></li>
+                <li><a href="../terms/">Terms</a></li>
+                <li><a href="./" aria-current="page">Privacy</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
