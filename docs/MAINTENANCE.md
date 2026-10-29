@@ -37,17 +37,19 @@ python3 tools/test_check_site.py       # tests of the check itself
 check fails on an absolute internal link, a missing file or `#fragment`, a resource loaded from
 another site, a link to a place we control that isn't in `KNOWN_TARGETS`
 (`tools/check_site.py`), a buy button that is enabled while its checkout URL is empty or that
-disagrees with `checkout-links.json`, and an Open Graph URL that isn't on `https://chirhocode.com/`
-or names a file the site doesn't have.
+disagrees with `checkout-links.json`, and an Open Graph URL that isn't under `SITE_URL`
+(`tools/check_site.py`) or names a file the site doesn't have.
 
 **Links stay relative.** The site is served first at a github.io project path
 (`https://tossbaws.github.io/chirhocode-site/`), then at the domain root. Relative links work in
 both; `/terms/` would break on the first.
 
-**Open Graph is the exception.** `og:url` and `og:image` must be absolute, so they name the final
-domain, `https://chirhocode.com/...`. Link previews show the image only once the domain points at
-this site (stage 2). If the domain ever changes, update every page's `og:url` and `og:image`, and
-`DOMAIN` in `tools/check_site.py`.
+**Open Graph is the exception.** `og:url` and `og:image` must be absolute, so they name the
+address the site is published at: `SITE_URL` in `tools/check_site.py`, now
+`https://tossbaws.github.io/chirhocode-site/` (decision W8: github.io first, chirhocode.com keeps
+forwarding to Gospel Getter's site for now). When the domain points here (stage 2, step 6),
+change `SITE_URL` to `https://chirhocode.com/` and every page's `og:url` and `og:image` with it,
+in one commit.
 
 ## Buy buttons: where the checkout URLs go
 
@@ -81,9 +83,10 @@ with 1.0" button and names no repo. At 1.0:
 4. Remove or reword the 1.0 notes on that page: the "In development" line under the lede, "Available
    with 1.0", the pre-1.0 wording in "What has run on a real host" (update it from the README's
    section of the same name), and the screenshot captions if the shots are retaken.
-5. Terms: once the Captain settles the three "To be confirmed" items (the 2.0 rule, the refund
-   window, the liability wording), update `site/terms/index.html` from the final text and remove the
-   draft banner.
+5. Terms: the refund window (14 days, W6) and the 2.0 rule (paid upgrade, discounted, W7) are
+   decided. Once the limitation-of-liability wording is reviewed, replace its "To be confirmed"
+   note in `site/terms/index.html` with the final text and remove the draft banner (W8 keeps it
+   until then).
 
 Every product claim on the sales page comes from Server Sanctuary's README at `master` (a private
 repo) and the design docs in `~/Documents/server-sanctuary/design/`. When those change, the page
@@ -129,7 +132,8 @@ Primary button text `#1a140e` on gold: 10.8. Focus ring: 3 px gold. Every page h
 
 ## Stage 2: publishing and the domain (not done yet)
 
-Nothing here is enabled yet. In order:
+Nothing here is enabled yet. Step 1 alone publishes the site at its github.io address (W8); the
+rest waits until the Captain says to point the domain. In order:
 
 1. **Enable Pages:** repository Settings → Pages → Build and deployment → Source: **GitHub
    Actions**. Then run the "Website" workflow (`workflow_dispatch`) or merge a change under
@@ -160,5 +164,7 @@ Nothing here is enabled yet. In order:
    Actions deploy, GitHub ignores a `CNAME` file in the artifact, so the setting is what counts;
    don't add `site/CNAME`. GitHub then serves `www.chirhocode.com` as a redirect to the apex.
 5. **HTTPS:** once the certificate is issued (minutes to a day), tick **Enforce HTTPS**.
-6. Check `https://chirhocode.com/`, each page, and a link preview of `/server-sanctuary/` (the
-   Open Graph image now resolves).
+6. **Open Graph:** set `SITE_URL` in `tools/check_site.py` to `https://chirhocode.com/` and
+   replace `https://tossbaws.github.io/chirhocode-site/` with it in every page's `og:url` and
+   `og:image`; run the checks and merge.
+7. Check `https://chirhocode.com/`, each page, and a link preview of `/server-sanctuary/`.

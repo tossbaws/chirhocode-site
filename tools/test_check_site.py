@@ -84,6 +84,18 @@ class CheckSiteTest(unittest.TestCase):
         self.edit("site/index.html", 'href="terms/"', 'href="https://chirhocode.com/terms/"')
         self.assertFails("absolute internal link")
 
+    def test_github_io_link_to_this_site_fails(self):
+        self.edit("site/index.html", 'href="terms/"', 'href="https://tossbaws.github.io/chirhocode-site/terms/"')
+        self.assertFails("absolute internal link")
+
+    def test_og_url_outside_site_url_fails(self):
+        self.edit(
+            "site/index.html",
+            '<meta property="og:url" content="https://tossbaws.github.io/chirhocode-site/">',
+            '<meta property="og:url" content="https://chirhocode.com/">',
+        )
+        self.assertFails("must be an absolute URL under")
+
     def test_unknown_link_in_our_control_fails(self):
         self.edit(
             PAGE,

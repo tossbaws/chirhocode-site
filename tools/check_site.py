@@ -2,9 +2,10 @@
 """Check the static site in site/ before it's published.
 
 Fails (exit 1) on:
-- an absolute internal link (/path, //host or https://chirhocode.com/... in
-  an href or src): the site is served under a github.io project path first,
-  then at the domain root, so internal links must be relative;
+- an absolute internal link (/path, //host, or a link to SITE_URL or
+  chirhocode.com in an href or src): the site is served under a github.io
+  project path first, then at the domain root, so internal links must be
+  relative;
 - a relative link to a file or #fragment that doesn't exist;
 - a script, stylesheet, image or font loaded from another site;
 - a link to a place we control (our GitHub account, our github.io pages,
@@ -12,8 +13,8 @@ Fails (exit 1) on:
   that doesn't exist yet;
 - a buy button that is enabled while its checkout URL in
   checkout-links.json is empty, or that disagrees with the JSON;
-- an Open Graph URL that isn't https://chirhocode.com/ or names a file the
-  site doesn't have.
+- an Open Graph URL that isn't under SITE_URL or names a file the site
+  doesn't have.
 
 With --online it also fetches every external link and prints its status;
 a link to a place we control that doesn't answer 2xx/3xx fails.
@@ -33,6 +34,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 LINKS = ROOT / "checkout-links.json"
 DOMAIN = "chirhocode.com"
+# Where the site is published. Open Graph URLs must be absolute, so they
+# start with this. Until chirhocode.com points at Pages (stage 2,
+# docs/MAINTENANCE.md) it's the github.io project address; then it becomes
+# "https://chirhocode.com/", with every page's og:url and og:image.
+SITE_URL = "https://tossbaws.github.io/chirhocode-site/"
 
 # Places we control. A link to one of them must be listed here, and only
 # once the target exists (a public repo, a published page). Add the
@@ -98,6 +104,12 @@ def parse(path):
     return page
 
 
+def is_internal_url(url):
+    """An absolute URL for this site: SITE_URL, or chirhocode.com at any path."""
+    host = (urlsplit(url).hostname or "").lower()
+    return host in (DOMAIN, "www." + DOMAIN) or url.lower().startswith(SITE_URL.lower())
+
+
 def site_file_for(path_part):
     """The file under site/ a URL path names (a folder means its index.html)."""
     target = SITE / unquote(path_part).lstrip("/")
@@ -135,8 +147,7 @@ def check(online=False):
             if parts.scheme in ("mailto", "tel"):
                 continue
             if parts.scheme in ("http", "https") or value.startswith("//"):
-                host = (parts.hostname or "").lower()
-                if host == DOMAIN or host == "www." + DOMAIN or value.startswith("//"):
+                if is_internal_url(value) or value.startswith("//"):
                     errors.append(f"{where}: absolute internal link {value!r}; use a relative link")
                     continue
                 if tag in RESOURCE_TAGS:
@@ -180,11 +191,10 @@ def check(online=False):
 
         for prop, content, line in page.meta:
             where = f"{rel}:{line}"
-            parts = urlsplit(content)
-            if parts.scheme != "https" or parts.hostname != DOMAIN:
-                errors.append(f"{where}: {prop} {content!r} must be an absolute https://{DOMAIN}/ URL")
+            if not content.startswith(SITE_URL):
+                errors.append(f"{where}: {prop} {content!r} must be an absolute URL under {SITE_URL}")
                 continue
-            if not site_file_for(parts.path or "/").is_file():
+            if not site_file_for(urlsplit(content[len(SITE_URL):]).path).is_file():
                 errors.append(f"{where}: {prop} {content!r} names a file site/ doesn't have")
 
         for tag, a, line in page.buttons:
