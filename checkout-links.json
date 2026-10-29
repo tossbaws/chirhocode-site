@@ -1,0 +1,14 @@
+{
+  "community": {
+    "label": "Buy Community, $15",
+    "url": ""
+  },
+  "pro": {
+    "label": "Buy Pro, $30",
+    "url": ""
+  },
+  "pro-upgrade": {
+    "label": "Buy Pro Upgrade, $15",
+    "url": ""
+  }
+}

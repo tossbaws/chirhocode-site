@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Server Sanctuary: your own game servers on Linux, from the terminal · Chi Rho Code LLC</title>
+    <meta name="description" content="Server Sanctuary is a terminal app that runs Valheim, Palworld and custom game servers on your own Linux machine with rootless Podman and systemd. Free for 2 servers per machine; one-time licences from $15.">
+    <meta name="theme-color" content="#0e1113">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Chi Rho Code LLC">
+    <meta property="og:title" content="Server Sanctuary: your own game servers on Linux, from the terminal">
+    <meta property="og:description" content="Run Valheim, Palworld and custom game servers on your own Linux machine with rootless Podman and systemd. Free for 2 servers per machine; one-time licences from $15.">
+    <!-- Open Graph needs absolute URLs; they name the final domain (docs/MAINTENANCE.md). -->
+    <meta property="og:url" content="https://tossbaws.github.io/chirhocode-site/server-sanctuary/">
+    <meta property="og:image" content="https://tossbaws.github.io/chirhocode-site/assets/og-server-sanctuary.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Server Sanctuary's Servers screen in a terminal: a Valheim server marked UP with its start checklist done, beside a stopped Palworld server">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="../assets/mark.svg">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="../">
+                <img src="../assets/mark.svg" alt="" width="32" height="32">
+                <span>Chi Rho Code LLC</span>
+            </a>
+            <nav class="site-nav" aria-label="Main">
+                <ul>
+                    <li><a href="./" aria-current="page">Server Sanctuary</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#requirements">Requirements</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <section class="hero" aria-labelledby="page-title">
+            <div class="wrap">
+                <p class="eyebrow">Server Sanctuary · by Chi Rho Code LLC</p>
+                <h1 id="page-title">Your own game servers, on your own Linux machine.</h1>
+                <p class="lede">Server Sanctuary is a terminal app (a TUI) that runs Valheim, Palworld and custom game servers on a Linux machine you control, with rootless Podman and systemd. It shows you what a change will do before it makes it: deployments, settings, bans and setup steps each get a review first.</p>
+                <p class="status">In development: paid licences and downloads start with version 1.0.</p>
+                <div class="actions">
+                    <a class="button button-primary" href="#pricing">See pricing</a>
+                    <a class="button button-secondary" href="#requirements">Requirements and limits</a>
+                </div>
+                <figure class="shot hero-shot">
+                    <a href="../assets/shots/74-servers-up-valheim.webp"><img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" fetchpriority="high"
+                         alt="The Servers screen in a terminal. The list shows ckpt-valheim marked UP on UDP ports 2456 and 2457, and ckpt-palworld stopped. The detail of the Valheim server shows its systemd user service active (running), a start checklist with image pull, warm-up, game files, game server and world loading all done, and the ready signal: game reported connected, external join not verified."></a>
+                    <figcaption>The Servers screen with a Valheim server up and its start checklist done. Captured on a test machine (Ubuntu Server 26.04.1, rootless Podman 5.7) on 14 October 2026, with a pre-1.0 build.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section" id="what" aria-labelledby="what-title">
+            <div class="wrap">
+                <h2 id="what-title">What it is, and who it’s for</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>For you if…</h3>
+                        <ul class="tick-list">
+                            <li>you host a game for friends, family or a group on a Linux machine of your own: a home server, a spare PC or a server you rent;</li>
+                            <li>you’re happy in a terminal and over SSH;</li>
+                            <li>you’d rather see exactly what will change before it changes.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>What it does</h3>
+                        <ul class="tick-list">
+                            <li>Checks the machine is ready (systemd, rootless Podman, Quadlet) and, on Ubuntu Server, offers each setup step for you to approve.</li>
+                            <li>Runs each server as a rootless Podman container under a systemd user service, on its own ports, with its own world, settings and backups.</li>
+                            <li>Starts, stops, backs up and removes servers from one screen, and shows real progress from systemd and the game’s own log lines.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>What it isn’t</h3>
+                        <ul class="tick-list">
+                            <li>Not a hosting service: the servers run on your machine.</li>
+                            <li>Not for Windows or macOS: Linux on x86_64 only.</li>
+                            <li>Not a check that players can reach you: router port forwarding is up to you.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="look" aria-labelledby="look-title">
+            <div class="wrap">
+                <h2 id="look-title">A look at the app</h2>
+                <p class="muted">Real captures of the real app, not mock-ups. They come from pre-1.0 builds, so the current layout differs in places.</p>
+                <div class="shots">
+                    <figure class="shot">
+                        <a href="../assets/shots/67-deploy_review-ready-valheim.webp"><img src="../assets/shots/67-deploy_review-ready-valheim.webp" width="1312" height="704" loading="lazy" decoding="async"
+                             alt="The deploy review for ckpt-valheim, marked READY. It lists what was checked (host ready, memory available, UDP ports free), what it creates as your user without sudo (the systemd service, the Quadlet unit file, settings, world folder and Podman secret), how it runs (server name, ports, pinned image, memory and CPU limits, starts at boot, backups), how the password is handled, and what is not checked: port forwarding elsewhere. At the bottom: y go ahead, n or Esc cancel."></a>
+                        <figcaption>The deploy review: every file, service and limit it will create, and what it doesn’t check, before you press <kbd>y</kbd>. Test machine, 14 October 2026.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <a href="../assets/shots/57-settings_presets-fast-progress.webp"><img src="../assets/shots/57-settings_presets-fast-progress.webp" width="1312" height="704" loading="lazy" decoding="async"
+                             alt="The settings of a Palworld server, with the Server Sanctuary presets dialog open on preset 3 of 3, Fast progress. It lists the 6 settings it would change, such as Experience rate from 1.00 to 3.00 and Work speed from 1.00 to 2.00, and says settings it does not name stay as they are and nothing is saved until the changes are reviewed and applied."></a>
+                        <figcaption>Settings presets for Palworld show exactly what they would change; nothing is applied until you review it. Captured locally (no game server running) on 12 October 2026.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <a href="../assets/shots/79-backups-list-valheim.webp"><img src="../assets/shots/79-backups-list-valheim.webp" width="1312" height="704" loading="lazy" decoding="async"
+                             alt="The Backups dialog of server ckpt-valheim, over the Servers screen. It lists one manual backup from 2026-10-15 at 03:06 UTC, 160 KiB, 9 files with its SHA-256, which is checked again before a restore, and the folder it is kept in. Keys: c new, Enter restore, d delete, Esc close."></a>
+                        <figcaption>World backups, each with its checksum, checked again before a restore. Test machine, 14 October 2026 (the backup is stamped in UTC).</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="every-tier" aria-labelledby="every-tier-title">
+            <div class="wrap">
+                <h2 id="every-tier-title">What every tier gets, Free included</h2>
+                <p>Anything that keeps a single server safe and working is in every tier. Pro is for convenience once you run many servers; it never holds back the basics.</p>
+                <ul class="cards">
+                    <li class="card">
+                        <h3>Crash restarts</h3>
+                        <p>systemd restarts a server that fails, and brings your servers back after a reboot.</p>
+                    </li>
+                    <li class="card">
+                        <h3>Game updates</h3>
+                        <p>Each time a server starts, it checks Steam for a newer game build and installs it first.</p>
+                    </li>
+                    <li class="card">
+                        <h3>Backups and scheduled backups</h3>
+                        <p>World backups when you ask, or daily or weekly on a schedule, with a number to keep. A running server is stopped for a clean world save, then started again; while players are online it waits (up to 6 hours).</p>
+                    </li>
+                    <li class="card">
+                        <h3>Every supported game</h3>
+                        <p>Unmodded Valheim, unmodded Palworld, and custom game servers you describe in a TOML profile (a commented example for a Minecraft Bedrock server is included).</p>
+                    </li>
+                    <li class="card">
+                        <h3>Stopped stays stopped</h3>
+                        <p>A server you stop stays stopped, across reboots too, until you start it again.</p>
+                    </li>
+                    <li class="card">
+                        <h3>Bans, the Log and scripts</h3>
+                        <p>Ban and unban players on a server, see who is online and what happened in the Log, and drive it all from scripts with the headless commands.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="pricing" aria-labelledby="pricing-title">
+            <div class="wrap">
+                <h2 id="pricing-title">Pricing</h2>
+                <p>One-time prices, not subscriptions. Each licence is for one person. Licences apply from version 1.0 and cover every 1.x release; 2.0 will be a paid upgrade, discounted for existing owners.</p>
+                <div class="table-wrap">
+                    <table class="stack-table">
+                        <caption>Server Sanctuary licence tiers</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Tier</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Game servers per machine</th>
+                                <th scope="col">Machines</th>
+                                <th scope="col"><span class="visually-hidden">Buy</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- The buy buttons below are written by tools/set_checkout_links.py
+                                 from checkout-links.json, the one place the checkout URLs go.
+                                 Don't edit them by hand: tools/check_site.py fails if they
+                                 and the JSON disagree. -->
+                            <tr>
+                                <th scope="row">Free</th>
+                                <td data-label="Price" class="price">$0</td>
+                                <td data-label="Game servers per machine">2</td>
+                                <td data-label="Machines">any number</td>
+                                <td class="buy">No key needed</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Community</th>
+                                <td data-label="Price" class="price">$15, one time</td>
+                                <td data-label="Game servers per machine">unlimited</td>
+                                <td data-label="Machines">up to 5</td>
+                                <td class="buy"><a class="button" data-checkout="community" aria-disabled="true">Available with 1.0</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Pro</th>
+                                <td data-label="Price" class="price">$30, one time</td>
+                                <td data-label="Game servers per machine">unlimited</td>
+                                <td data-label="Machines">up to 25</td>
+                                <td class="buy"><a class="button" data-checkout="pro" aria-disabled="true">Available with 1.0</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Pro Upgrade</th>
+                                <td data-label="Price" class="price">$15, one time</td>
+                                <td data-label="Game servers per machine">turns a Community licence into Pro</td>
+                                <td data-label="Machines">up to 25</td>
+                                <td class="buy"><a class="button" data-checkout="pro-upgrade" aria-disabled="true">Available with 1.0</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cards">
+                    <div class="card">
+                        <h3>What Pro adds</h3>
+                        <ul class="tick-list">
+                            <li><strong>Multi-machine view:</strong> every machine’s servers in one place, over SSH.</li>
+                            <li><strong>Ban everywhere:</strong> one press bans a player on every server of that game, on every machine.</li>
+                            <li><strong>Bulk settings:</strong> one settings change applied to several servers, with one review.</li>
+                            <li><strong>Players screen:</strong> the history of players seen on this machine, with an export.</li>
+                        </ul>
+                        <p class="muted">Pro Upgrade: buy it with the same email you used for Community. A machine is Pro when it holds both keys from the same customer.</p>
+                    </div>
+                    <div class="card">
+                        <h3>The Free limit, in plain words</h3>
+                        <p>Free runs up to 2 game servers on each machine, on as many machines as you like, with no key.</p>
+                        <p>If a machine has more than 2 servers and no valid licence (say, after a refund or more than 30 days offline), you get 24 hours’ warning. Then the 2 servers you pick, or the 2 oldest, keep running, and the others go on a <strong>licence hold</strong>: stopped cleanly with the world saved, and kept stopped. A held server is never deleted; you can still view it, read its log, back it up, ban players on it and remove it.</p>
+                        <p>The hold lifts when the machine is licensed again or is down to 2 servers.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Licences and machines</h3>
+                        <p>Adding your key to a machine uses one of its machine slots. The app checks the licence with Polar when it starts and once a day, and keeps working offline for 30 days after a successful check.</p>
+                        <p>To move a licence, release the machine in the app (after it has held the slot for 7 days). A machine lost or wiped while holding a slot? Email us and we free it.</p>
+                        <p>Payments, tax and receipts are handled by Polar as merchant of record. Refunds within 14 days of purchase, no questions asked. <a href="../terms/">Read the full terms</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="download" aria-labelledby="download-title">
+            <div class="wrap narrow">
+                <h2 id="download-title">Download</h2>
+                <p>Server Sanctuary is one program for <strong>Linux on x86_64</strong>. It needs glibc 2.35 or newer (Ubuntu 22.04 or newer, for example), systemd and rootless Podman. On Ubuntu Server, the app’s Host check helps set up the rest.</p>
+                <p>Releases will be published with a <code>SHA256SUMS</code> file so you can check your download.</p>
+                <div class="actions">
+                    <a class="button" data-download aria-disabled="true">Download available with 1.0</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="requirements" aria-labelledby="requirements-title">
+            <div class="wrap">
+                <h2 id="requirements-title">Requirements and limits</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>You need</h3>
+                        <ul class="tick-list">
+                            <li>Linux on x86_64 with glibc 2.35 or newer.</li>
+                            <li>systemd, with a user session; linger keeps servers running while you’re logged out.</li>
+                            <li>Rootless Podman with Quadlet (Podman 4.4 or newer) and cgroup v2.</li>
+                            <li>A regular user account, not root.</li>
+                            <li>A terminal of at least 40×12 (100×24 or more shows the list and details side by side).</li>
+                            <li>Enough memory for your games: each deployment is checked against the machine’s free memory first.</li>
+                        </ul>
+                        <p>The Host check runs read-only checks for all of this. On Ubuntu Server it can install Podman and turn on linger, one step at a time after you approve each; your password goes to <code>sudo</code>, never to the app. On other distributions the checks are read-only and setup is up to you.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Limits, honestly</h3>
+                        <ul class="tick-list">
+                            <li>Linux on x86_64 only: no Windows, macOS or ARM builds.</li>
+                            <li>Binaries aren’t code-signed; check them against <code>SHA256SUMS</code>.</li>
+                            <li>No automatic updates of the app: you download each new version yourself.</li>
+                            <li>It doesn’t check that players can reach your server, and it never changes your router or firewall.</li>
+                            <li>Games: unmodded Valheim and Palworld, and custom profiles. No mods.</li>
+                            <li>No Update Now button or update schedule: a game update is checked when a server starts.</li>
+                            <li>Backups hold the world only, not the app’s own list of servers, and a restore brings back the world only. Backup and restore aren’t called production-ready yet; keep your own copy of anything you can’t lose.</li>
+                            <li>The Ubuntu setup steps have run on Ubuntu Server 26.04.1 so far; 22.04 and 24.04 haven’t been tried yet.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>What has run on a real host</h3>
+                        <p class="muted">All with pre-1.0 builds, October 2026.</p>
+                        <ul class="tick-list">
+                            <li>On an Ubuntu VPS: deploy, first start, a player joining, a clean save on stop, the world kept across a restart, and removal.</li>
+                            <li>On a test VM (Ubuntu Server 26.04.1, rootless Podman 5.7): Valheim and Palworld end to end with players joining on the local network, and their settings reaching both games.</li>
+                            <li>Host reboots: servers saved cleanly on shutdown and came back at boot with nobody logged in; a server you stopped stayed stopped.</li>
+                            <li>Bans enforced by both games; bulk settings across four servers; the Players screen with real joins.</li>
+                            <li>A custom game server (the Minecraft Bedrock example) started and ran; a real player join on it is still unproven.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="support" aria-labelledby="support-title">
+            <div class="wrap narrow">
+                <h2 id="support-title">Support</h2>
+                <p>Email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a>. We aim to answer within 48 hours.</p>
+                <p>Write to us to free the slot of a machine that was lost, wiped or reinstalled, for questions about your licence or a refund, or when something doesn’t work.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <ul>
+                <li>© Chi Rho Code LLC</li>
+                <li><a href="mailto:help@chirhocode.com">help@chirhocode.com</a></li>
+                <li><a href="../terms/">Terms</a></li>
+                <li><a href="../privacy/">Privacy</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
