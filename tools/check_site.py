@@ -41,10 +41,13 @@ DOMAIN = "chirhocode.com"
 SITE_URL = "https://tossbaws.github.io/chirhocode-site/"
 
 # Places we control. A link to one of them must be listed here, and only
-# once the target exists (a public repo, a published page). Add the
-# releases-only repo's URL here when it is public (docs/MAINTENANCE.md).
+# once the target exists (a public repo, a published page).
+RELEASES = "https://github.com/tossbaws/server-sanctuary-releases/releases/latest"
 KNOWN_TARGETS = {
     "https://tossbaws.github.io/gospel-getter/",
+    RELEASES,
+    RELEASES + "/download/server_sanctuary-x86_64-linux-gnu",
+    RELEASES + "/download/SHA256SUMS",
 }
 
 URL_ATTRS = {"href", "src", "poster", "action"}

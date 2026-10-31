@@ -64,10 +64,10 @@
                 <p class="statement">Your own Valheim, Palworld and custom game servers, on a Linux machine you control, run from the terminal.</p>
                 <p class="support">Every deployment, settings change and setup step is shown to you in full before it happens. Nothing changes until you press <kbd>y</kbd>.</p>
                 <div class="actions">
-                    <a class="button button-gold" href="mailto:help@chirhocode.com?subject=Server%20Sanctuary%201.0&amp;body=Please%20email%20me%20when%20Server%20Sanctuary%201.0%20is%20available.">Email me when 1.0 ships</a>
+                    <a class="button button-gold" href="#download">Download for Linux</a>
                     <a class="link" href="#pricing">See pricing</a>
                 </div>
-                <p class="small">In development. Licences and downloads open with version 1.0.</p>
+                <p class="small">Version 1.0.0, released 31 October 2026.</p>
             </div>
             <figure class="pane pane-window">
                 <img class="window" src="../assets/brand/chi-rho-window-960.webp" srcset="../assets/brand/chi-rho-window-480.webp 480w, ../assets/brand/chi-rho-window-960.webp 960w, ../assets/brand/chi-rho-window-1600.webp 1600w" sizes="(max-width: 46rem) 92vw, 42vw" width="960" height="960" fetchpriority="high"
@@ -94,7 +94,7 @@
                     <a href="../assets/shots/74-servers-up-valheim.webp"><img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async"
                          alt="The Servers screen in a terminal. The list shows ckpt-valheim marked UP on UDP ports 2456 and 2457, and ckpt-palworld stopped. The detail of the Valheim server shows its systemd user service active (running), a start checklist with image pull, warm-up, game files, game server and world loading all done, and the ready signal: game reported connected, external join not verified."></a>
                 </div>
-                <figcaption class="strip">The Servers screen, a Valheim server up and its start checklist done. Test machine (Ubuntu Server 26.04.1, Podman 5.7), 14 October 2026, pre-1.0 build.</figcaption>
+                <figcaption class="strip">The Servers screen, a Valheim server up and its start checklist done. Test machine (Ubuntu Server 26.04.1, Podman 5.7), 14 October 2026, an earlier build.</figcaption>
             </figure>
             <div class="pane pane-night pane-note">
                 <h2 id="screen-title">What’s really running</h2>
@@ -287,7 +287,7 @@
                             <td data-label="Game servers per machine">Unlimited servers</td>
                             <td data-label="Machines">Up to 5 machines</td>
                             <td data-label="Pro features">No Pro features</td>
-                            <td class="buy"><a class="button" data-checkout="community" aria-disabled="true">Available with 1.0</a></td>
+                            <td class="buy"><a class="button button-primary" data-checkout="community" href="https://buy.polar.sh/polar_cl_as78ioBQHlcCgNCoH7kY7aZcsccVzRHMjfgyP1sgtpJ">Buy Community, $15</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Pro</th>
@@ -295,7 +295,7 @@
                             <td data-label="Game servers per machine">Unlimited servers</td>
                             <td data-label="Machines">Up to 25 machines</td>
                             <td data-label="Pro features">Pro features</td>
-                            <td class="buy"><a class="button" data-checkout="pro" aria-disabled="true">Available with 1.0</a></td>
+                            <td class="buy"><a class="button button-primary" data-checkout="pro" href="https://buy.polar.sh/polar_cl_RRhn5QeiwgWi4csMBL17FATIMNu74e64vm2xX3GoqIa">Buy Pro, $30</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Pro Upgrade</th>
@@ -303,7 +303,7 @@
                             <td data-label="Game servers per machine">Unlimited servers</td>
                             <td data-label="Machines">Up to 25 machines</td>
                             <td data-label="Pro features">Pro features, added to Community</td>
-                            <td class="buy"><a class="button" data-checkout="pro-upgrade" aria-disabled="true">Available with 1.0</a></td>
+                            <td class="buy"><a class="button button-primary" data-checkout="pro-upgrade" href="https://buy.polar.sh/polar_cl_2EBUExS718obAQCxIYNQ6D64nNj7e9k55cwjZ0fDtT9">Buy Pro Upgrade, $15</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -376,12 +376,15 @@
                     <li>Bans enforced by both games, bulk settings across four servers, and the Players screen with real joins.</li>
                     <li>A custom game server, the Minecraft Bedrock example, started and ran. A real player join on it is still unproven.</li>
                 </ul>
-                <p class="small">All with pre-1.0 builds, October 2026.</p>
+                <p class="small">Tested in October 2026, on the builds leading up to the 1.0.0 release.</p>
             </article>
             <article class="pane pane-emerald-deep download" id="download">
                 <h3>Download</h3>
                 <p>One program for Linux on x86_64. Each release comes with a <code>SHA256SUMS</code> file so you can check your download.</p>
-                <p><a class="button" data-download aria-disabled="true">Download available with 1.0</a></p>
+                <div>
+                    <p><a class="button" data-download href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/server_sanctuary-x86_64-linux-gnu">Download for Linux x86_64</a></p>
+                    <p class="small"><a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/SHA256SUMS">SHA256SUMS</a> · <a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest">Release page</a></p>
+                </div>
             </article>
         </section>
 
@@ -400,7 +403,7 @@
             </div>
             <div class="band">
                 <h3>What does it send over the internet?</h3>
-                <p>One STUN request to learn your public address for the join details, kept in memory only. From 1.0, a licence check with Polar when the app starts and once a day. Podman pulls the game’s image, and the server downloads the game when you start it.</p>
+                <p>One STUN request to learn your public address for the join details, kept in memory only. A licence check with Polar when the app starts and once a day. Podman pulls the game’s image, and the server downloads the game when you start it.</p>
             </div>
             <div class="band">
                 <h3>Can I run mods or other games?</h3>
@@ -422,9 +425,9 @@
                 <img src="../assets/brand/chi-rho-window-960.webp" width="960" height="960" loading="lazy" decoding="async" alt="">
             </div>
             <div class="pane pane-gold close-action">
-                <h2 id="close-title">Be first to run 1.0</h2>
-                <p>Licences and downloads open with version 1.0. Send us a note and we’ll tell you when it ships.</p>
-                <a class="button button-ink" href="mailto:help@chirhocode.com?subject=Server%20Sanctuary%201.0&amp;body=Please%20email%20me%20when%20Server%20Sanctuary%201.0%20is%20available.">Email me when 1.0 ships</a>
+                <h2 id="close-title">Run it on your own machine</h2>
+                <p>Server Sanctuary is free for 2 servers on every machine, with no key and no account. Buy a licence when you need more.</p>
+                <a class="button button-ink" href="#download">Download for Linux</a>
             </div>
             <div class="pane pane-night close-support">
                 <h3>Support</h3>

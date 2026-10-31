@@ -60,39 +60,43 @@ in one commit.
 ## Buy buttons: where the checkout URLs go
 
 `checkout-links.json` is the one place for the three Polar checkout links (Community, Pro, Pro
-Upgrade). While a `url` is empty, its button is a disabled "Available with 1.0" (an `<a>` with no
-`href` and `aria-disabled="true"`: not focusable, not clickable). When the Captain hands over the
-production checkout links:
+Upgrade). Since 1.0.0 all three hold the Captain's production links and the buttons are live. A
+tier whose `url` is empty gets a disabled "Available with 1.0" (an `<a>` with no `href` and
+`aria-disabled="true"`: not focusable, not clickable), so emptying a `url` is how to pause a
+product. To change a link:
 
-1. Put each link in its tier's `url` in `checkout-links.json` (an `https://` URL on `polar.sh`,
+1. Put the link in its tier's `url` in `checkout-links.json` (an `https://` URL on `polar.sh`,
    such as `https://buy.polar.sh/polar_cl_...`). Leave the labels unless the prices change.
 2. `python3 tools/set_checkout_links.py` rewrites the three buttons on
    `site/server-sanctuary/index.html` (live: gold, with the label and the link).
 3. `python3 tools/check_site.py --online`, then commit both files in one pull request.
 
 Don't edit the buttons by hand: the check fails when the page and the JSON disagree. Use the
-production links only, never sandbox ones.
+production links only, never sandbox ones. `check_site.py --online` opens each checkout link, and
+Polar starts a checkout session for every visit; they expire unused, but they show up among the
+shop's checkouts.
 
-## Release-time update (Server Sanctuary 1.0)
+## Each Server Sanctuary release
 
-Downloads come from the public releases-only repo (decision W2), whose name isn't decided yet.
-Until it exists and 1.0 is published, the Download section shows a disabled "Download available
-with 1.0" button and names no repo. At 1.0:
+Downloads come from the public releases-only repo `tossbaws/server-sanctuary-releases` (decision
+W2). The Download section links to `releases/latest/download/server_sanctuary-x86_64-linux-gnu`,
+to `SHA256SUMS` beside it, and to the `releases/latest` page; all three are in `KNOWN_TARGETS`
+(`tools/check_site.py`) and follow each new release by themselves. The buttons say "Download for
+Linux" with no version, so they stay true. What does name the version, and needs a hand edit
+after each release:
 
-1. Add the releases page URL to `KNOWN_TARGETS` in `tools/check_site.py`, for example
-   `https://github.com/tossbaws/<releases repo>/releases/latest`, and only once the repo is public
-   and the release is published.
-2. In `site/server-sanctuary/index.html`, replace the `data-download` button with a live link to
-   that URL, and keep the line about `SHA256SUMS` (add the `sha256sum -c SHA256SUMS` command if
-   useful).
-3. Fill in the checkout links (above).
-4. Remove or reword the 1.0 notes on that page: the "In development" line under the lede, "Available
-   with 1.0", the pre-1.0 wording in "What has run on a real host" (update it from the README's
-   section of the same name), and the screenshot captions if the shots are retaken.
-5. Terms: the refund window (14 days, W6) and the 2.0 rule (paid upgrade, discounted, W7) are
-   decided. Once the limitation-of-liability wording is reviewed, replace its "To be confirmed"
-   note in `site/terms/index.html` with the final text and remove the draft banner (W8 keeps it
-   until then).
+1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.0.0,
+   released 31 October 2026."
+2. `site/index.html`: the Server Sanctuary product's last point, "Version 1.0.0 is out".
+3. "What has run on a real host" on the Server Sanctuary page: update it from the README's section
+   of the same name, and its closing line ("Tested in October 2026, on the builds leading up to
+   the 1.0.0 release.").
+4. The screenshot captions, if the shots are retaken (see Asset provenance).
+
+Terms (not tied to a release): the refund window (14 days, W6) and the 2.0 rule (paid upgrade,
+discounted, W7) are decided. Once the limitation-of-liability wording is reviewed, replace its
+"To be confirmed" note in `site/terms/index.html` with the final text and remove the draft banner
+(W8 keeps it until then).
 
 Every product claim on the sales page comes from Server Sanctuary's README at `master` (a private
 repo) and the design docs in `~/Documents/server-sanctuary/design/`. When those change, the page
@@ -135,8 +139,8 @@ cropped, recoloured or edited.
 The OFL allows self-hosting and redistribution with the licence kept beside the files. The
 Latin subsets have no Greek: write "Alpha" and "Omega" in words, not the letters.
 
-All four shots predate the current build (the Servers list is now a table), so their captions
-say "pre-1.0 build". Retake them from a 1.0 build and update this table.
+All four shots predate the 1.0.0 release (the Servers list is now a table), so their captions
+say "an earlier build". Retake them from a release build and update this table and the captions.
 
 ## Colours and accessibility
 

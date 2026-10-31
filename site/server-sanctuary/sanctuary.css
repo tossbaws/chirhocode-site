@@ -636,8 +636,13 @@ a.fact:hover {
     color: var(--ink-soft);
 }
 
-.needs .download > p {
+.needs .download p {
     color: var(--ink);
+}
+
+/* The download button and its checksum and release links stay together. */
+.download div > * + * {
+    margin-top: 0.75rem;
 }
 
 /* ---------- Questions ---------- */

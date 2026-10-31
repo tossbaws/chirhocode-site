@@ -47,31 +47,48 @@ class CheckSiteTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
         self.assertIn(needle, result.stdout)
 
+    def set_checkout_url(self, tier, url):
+        links_path = self.tmp / "checkout-links.json"
+        links = json.loads(links_path.read_text(encoding="utf-8"))
+        links[tier]["url"] = url
+        links_path.write_text(json.dumps(links), encoding="utf-8")
+
+    def set_checkout_links(self):
+        subprocess.run([sys.executable, "-I", str(self.tmp / "tools" / "set_checkout_links.py")], check=True, capture_output=True)
+
     def test_untouched_site_passes(self):
         result = self.run_check()
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+    def test_live_button_left_after_its_url_is_emptied_fails(self):
+        self.set_checkout_url("community", "")
+        self.assertFails("is enabled while its checkout URL is empty")
+
+    def test_set_checkout_links_makes_a_disabled_button_that_passes(self):
+        self.set_checkout_url("community", "")
+        self.set_checkout_links()
+        self.assertIn(DISABLED_COMMUNITY, (self.tmp / PAGE).read_text(encoding="utf-8"))
+        self.assertEqual(self.run_check().returncode, 0)
+
     def test_buy_button_enabled_with_empty_url_fails(self):
+        self.set_checkout_url("community", "")
+        self.set_checkout_links()
         self.edit(PAGE, DISABLED_COMMUNITY, '<a class="button" data-checkout="community" href="">Buy Community, $15</a>')
         self.assertFails("is enabled while its checkout URL is empty")
 
     def test_buy_button_without_aria_disabled_fails(self):
+        self.set_checkout_url("community", "")
+        self.set_checkout_links()
         self.edit(PAGE, DISABLED_COMMUNITY, '<a class="button" data-checkout="community">Available with 1.0</a>')
         self.assertFails("is enabled while its checkout URL is empty")
 
     def test_buy_button_disagreeing_with_json_fails(self):
-        links_path = self.tmp / "checkout-links.json"
-        links = json.loads(links_path.read_text(encoding="utf-8"))
-        links["community"]["url"] = "https://buy.polar.sh/polar_cl_example"
-        links_path.write_text(json.dumps(links), encoding="utf-8")
+        self.set_checkout_url("community", "https://buy.polar.sh/polar_cl_example")
         self.assertFails("doesn't match checkout-links.json")
 
     def test_set_checkout_links_makes_a_live_button_that_passes(self):
-        links_path = self.tmp / "checkout-links.json"
-        links = json.loads(links_path.read_text(encoding="utf-8"))
-        links["pro"]["url"] = "https://buy.polar.sh/polar_cl_example"
-        links_path.write_text(json.dumps(links), encoding="utf-8")
-        subprocess.run([sys.executable, "-I", str(self.tmp / "tools" / "set_checkout_links.py")], check=True, capture_output=True)
+        self.set_checkout_url("pro", "https://buy.polar.sh/polar_cl_example")
+        self.set_checkout_links()
         page = (self.tmp / PAGE).read_text(encoding="utf-8")
         self.assertIn('href="https://buy.polar.sh/polar_cl_example">Buy Pro, $30</a>', page)
         self.assertEqual(self.run_check().returncode, 0)
@@ -99,8 +116,8 @@ class CheckSiteTest(unittest.TestCase):
     def test_unknown_link_in_our_control_fails(self):
         self.edit(
             PAGE,
-            '<a class="button" data-download aria-disabled="true">Download available with 1.0</a>',
-            '<a class="button" data-download href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest">Download</a>',
+            "https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/SHA256SUMS",
+            "https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/SHA256SUMS.sig",
         )
         self.assertFails("isn't in KNOWN_TARGETS")
 
