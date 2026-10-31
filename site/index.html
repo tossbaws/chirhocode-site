@@ -3,85 +3,206 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chi Rho Code LLC</title>
-    <meta name="description" content="Chi Rho Code LLC is a small software studio. We make Server Sanctuary, a terminal app for running your own game servers on Linux, and Gospel Getter, a free offline Bible reader.">
-    <meta name="theme-color" content="#0e1113">
+    <title>Chi Rho Code LLC: software made well, for the glory of God</title>
+    <meta name="description" content="Chi Rho Code LLC is a small Christian software company. We make Gospel Getter, a free offline Bible reader for Windows and Linux, and Server Sanctuary, for running your own game servers on Linux.">
+    <meta name="theme-color" content="#0b0c0a">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Chi Rho Code LLC">
-    <meta property="og:title" content="Chi Rho Code LLC">
-    <meta property="og:description" content="A small software studio: Server Sanctuary for self-hosted game servers on Linux, and Gospel Getter, a free offline Bible reader.">
+    <meta property="og:title" content="Chi Rho Code: software made well, for the glory of God">
+    <meta property="og:description" content="A small Christian software company. Gospel Getter, a free offline Bible reader for Windows and Linux, and Server Sanctuary, for your own game servers on Linux.">
     <!-- Open Graph needs absolute URLs; they name the final domain (docs/MAINTENANCE.md). -->
     <meta property="og:url" content="https://tossbaws.github.io/chirhocode-site/">
-    <meta property="og:image" content="https://tossbaws.github.io/chirhocode-site/assets/og-server-sanctuary.png">
+    <meta property="og:image" content="https://tossbaws.github.io/chirhocode-site/assets/og-home.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Server Sanctuary's Servers screen in a terminal: a Valheim server marked UP with its start checklist done, beside a stopped Palworld server">
+    <meta property="og:image:alt" content="The Chi Rho Code mark, a round stained-glass window with a gold Chi Rho, beside the words Chi Rho Code">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+    <link rel="preload" href="assets/fonts/source-serif-4-opsz.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/instrument-sans-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="brand.css">
+    <link rel="stylesheet" href="home.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Chi Rho Code LLC",
+        "email": "help@chirhocode.com",
+        "description": "A small Christian software company. We make Gospel Getter, a free offline Bible reader, and Server Sanctuary, for running your own game servers on Linux."
+    }
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
 
-    <header class="site-header">
-        <div class="wrap">
-            <a class="brand" href="./" aria-current="page">
-                <img src="assets/mark.svg" alt="" width="32" height="32">
-                <span>Chi Rho Code LLC</span>
-            </a>
-            <nav class="site-nav" aria-label="Main">
-                <ul>
-                    <li><a href="server-sanctuary/">Server Sanctuary</a></li>
-                    <li><a href="https://tossbaws.github.io/gospel-getter/">Gospel Getter</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="bar">
+        <a class="maker" href="./" aria-current="page">
+            <img src="assets/brand/chi-rho-window-128.webp" alt="" width="40" height="40">
+            <span>Chi Rho Code</span>
+        </a>
+        <nav aria-label="Main">
+            <ul>
+                <li><a href="#gospel-getter">Gospel Getter</a></li>
+                <li><a href="#server-sanctuary">Server Sanctuary</a></li>
+                <li><a href="#why">Why we build</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main id="main" tabindex="-1">
-        <section class="hero" aria-labelledby="page-title">
-            <div class="wrap">
-                <p class="eyebrow">A small software studio</p>
-                <h1 id="page-title">Chi Rho Code LLC</h1>
-                <p class="lede">Chi Rho Code LLC makes software that’s simple, private and offline-first.</p>
+
+        <!-- The first screen: the window, and what we are. -->
+        <section class="board home-hero" aria-labelledby="page-title">
+            <div class="pane pane-rose">
+                <img class="rose" src="assets/brand/chi-rho-window-960.webp" srcset="assets/brand/chi-rho-window-480.webp 480w, assets/brand/chi-rho-window-960.webp 960w, assets/brand/chi-rho-window-1600.webp 1600w" sizes="(max-width: 46rem) 70vw, 34vw" width="960" height="960" fetchpriority="high"
+                     alt="The Chi Rho Code mark: a round stained-glass window with a gold Chi Rho at its centre, Alpha and Omega on either side, and lead lines drawn as circuit traces across emerald and cyan glass.">
+                <h1 id="page-title">Software made well, for the glory of God.</h1>
+                <p class="statement">Chi Rho Code is a small Christian software company. We make a free Bible reader and a game server manager, both for your own computer.</p>
+                <div class="actions">
+                    <a class="button button-gold" href="https://tossbaws.github.io/gospel-getter/">Get Gospel Getter, free</a>
+                    <a class="link" href="server-sanctuary/">See Server Sanctuary</a>
+                </div>
             </div>
         </section>
 
-        <section class="section" aria-labelledby="products-title">
-            <div class="wrap">
-                <h2 id="products-title">What we make</h2>
-                <ul class="cards">
-                    <li class="card">
-                        <h3>Server Sanctuary</h3>
-                        <p>A terminal app that runs Valheim, Palworld and custom game servers on your own Linux machine, with rootless Podman and systemd. Free for up to 2 servers per machine; paid licences from version 1.0.</p>
-                        <a class="card-link" href="server-sanctuary/">About Server Sanctuary</a>
-                    </li>
-                    <li class="card">
-                        <h3>Gospel Getter</h3>
-                        <p>A free, offline Bible reader for Windows and Linux. Read, search and compare the KJV, BSB and WEB, with no account needed.</p>
-                        <a class="card-link" href="https://tossbaws.github.io/gospel-getter/">Visit the Gospel Getter website</a>
-                    </li>
-                </ul>
+        <!-- What we make: two panes, emerald on the left and cyan on the right, as in the window. -->
+        <section class="board products" aria-labelledby="products-title">
+            <div class="pane pane-black products-head">
+                <h2 id="products-title">Two programs, both on your own machine</h2>
+                <p>Neither asks you to sign in, and neither shows you an ad.</p>
             </div>
+
+            <article class="pane pane-emerald-deep product" id="gospel-getter" aria-labelledby="gg-title">
+                <div class="product-shot product-shot-gg">
+                    <img src="assets/gospel-getter/reading-john-3.webp" srcset="assets/gospel-getter/reading-john-3-700.webp 700w, assets/gospel-getter/reading-john-3.webp 1400w" sizes="(max-width: 46rem) 92vw, 46vw" width="1400" height="1074" loading="lazy" decoding="async"
+                         alt="Gospel Getter showing John 3 in the World English Bible, with the end of John 2 and the start of John 4 faded on either side.">
+                </div>
+                <div class="product-text">
+                    <h3 id="gg-title">Gospel Getter</h3>
+                    <p class="pitch">A free Bible reader for Windows and Linux that works offline.</p>
+                    <ul>
+                        <li>The KJV, BSB and WEB are built in, so you can read with no internet at all.</li>
+                        <li>Compare any two translations verse by verse, and search every word of the Bible.</li>
+                        <li>Your bookmarks, highlights and notes stay on your computer. No account, no ads, no price.</li>
+                        <li>Open source under the MIT licence.</li>
+                    </ul>
+                    <p class="product-action"><a class="button button-gold" href="https://tossbaws.github.io/gospel-getter/">Download Gospel Getter</a></p>
+                </div>
+            </article>
+
+            <article class="pane pane-teal-deep product" id="server-sanctuary" aria-labelledby="ss-title">
+                <div class="product-shot product-shot-ss">
+                    <img src="assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async"
+                         alt="Server Sanctuary's Servers screen in a terminal, with a Valheim server marked UP and its start checklist done.">
+                </div>
+                <div class="product-text">
+                    <h3 id="ss-title">Server Sanctuary</h3>
+                    <p class="pitch">Your own Valheim, Palworld and custom game servers, on a Linux machine you control.</p>
+                    <ul>
+                        <li>Every deployment, settings change and setup step is shown to you in full before it happens.</li>
+                        <li>Crash restarts, game updates and checked backups come with the free tier.</li>
+                        <li>Free for 2 servers on every machine. $15, once, for as many as you like.</li>
+                        <li>Version 1.0.0 is out: a free download, and one-time licences when you need more.</li>
+                    </ul>
+                    <p class="product-action"><a class="button button-ink" href="server-sanctuary/">See Server Sanctuary</a></p>
+                </div>
+            </article>
         </section>
 
-        <section class="section" id="contact" aria-labelledby="contact-title">
-            <div class="wrap narrow">
-                <h2 id="contact-title">Contact</h2>
-                <p>Questions, licences or help with Server Sanctuary: email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a>. We aim to answer within 48 hours.</p>
+        <!-- Why we build: the mission, what it means in practice, and the verse behind it. -->
+        <section class="board why" id="why" aria-labelledby="why-title">
+            <div class="pane pane-black why-head">
+                <h2 id="why-title">Why we build</h2>
+                <p class="statement">We are Christians. We believe honest, careful work is one way to serve God and the people who use what we make.</p>
+                <p>So the faith shows up in how the software behaves, more than in what it says.</p>
+            </div>
+            <div class="pane pane-night practice-list">
+                <div class="practice">
+                    <h3>It asks before it acts</h3>
+                    <p>Server Sanctuary shows every change for review before it makes it. Gospel Getter shows you what a backup file contains before anything changes.</p>
+                </div>
+                <div class="practice">
+                    <h3>What’s yours stays yours</h3>
+                    <p>No accounts. Your notes and your game worlds stay on your computer, and our websites have no analytics or cookies.</p>
+                </div>
+                <div class="practice">
+                    <h3>We tell you the limits</h3>
+                    <p>Each product page says what the software doesn’t do yet, and what hasn’t been tested on a real machine.</p>
+                </div>
+                <div class="practice">
+                    <h3>Scripture, word for word</h3>
+                    <p>Gospel Getter keeps every translation exactly as its public-domain source provides it. We never edit the text.</p>
+                </div>
+            </div>
+            <figure class="pane pane-emerald verse">
+                <blockquote>
+                    <p>And whatever you do, work heartily, as for the Lord, and not for men, knowing that from the Lord you will receive the reward of the inheritance; for you serve the Lord Christ.</p>
+                </blockquote>
+                <figcaption>Colossians 3:23–24, World English Bible</figcaption>
+            </figure>
+        </section>
+
+        <!-- The name in the window: pick a part of the mark to see it up close. -->
+        <section class="board mark" id="the-mark" aria-labelledby="mark-title">
+            <div class="pane pane-black mark-stage" aria-hidden="true">
+                <img class="detail detail-chirho" src="assets/brand/chi-rho-window-1600.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="">
+                <img class="detail detail-alpha" src="assets/brand/chi-rho-window-1600.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="">
+                <img class="detail detail-omega" src="assets/brand/chi-rho-window-1600.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="">
+                <img class="detail detail-traces" src="assets/brand/chi-rho-window-1600.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="">
+            </div>
+            <fieldset class="pane pane-night mark-parts">
+                <legend><h2 id="mark-title">The name in the window</h2></legend>
+                <p class="mark-intro">Our mark is a stained-glass window. Choose a part to see it up close.</p>
+                <div class="mark-choices">
+                    <input type="radio" name="glass" id="glass-chirho" checked>
+                    <label for="glass-chirho">Chi and Rho</label>
+                    <input type="radio" name="glass" id="glass-alpha">
+                    <label for="glass-alpha">Alpha</label>
+                    <input type="radio" name="glass" id="glass-omega">
+                    <label for="glass-omega">Omega</label>
+                    <input type="radio" name="glass" id="glass-traces">
+                    <label for="glass-traces">The lead lines</label>
+                </div>
+                <div class="mark-notes" aria-live="polite">
+                    <p data-glass="chirho">Chi and Rho, written X and P, are the first two letters of “Christ” in Greek. Christians have set them together as one sign since the fourth century, and the company is named after it.</p>
+                    <p data-glass="alpha">Alpha is the first letter of the Greek alphabet. In Revelation, Christ calls himself the Alpha and the Omega: the first and the last.</p>
+                    <p data-glass="omega">Omega is the last letter of the Greek alphabet. Set either side of the Chi Rho, the two letters say that Christ is at the beginning and the end of everything, our work included.</p>
+                    <p data-glass="traces">The lead that holds the glass is drawn as circuit traces, each ending in a solder pad: an old window made from the stuff our software runs on.</p>
+                </div>
+            </fieldset>
+        </section>
+
+        <!-- Contact. -->
+        <section class="board contact" id="contact" aria-labelledby="contact-title">
+            <div class="pane pane-gold contact-main">
+                <h2 id="contact-title">Write to us</h2>
+                <p>Questions about either program, licences or refunds, or something that doesn’t work: email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a>. We aim to answer within 48 hours.</p>
+                <a class="button button-ink" href="mailto:help@chirhocode.com">Email help@chirhocode.com</a>
+            </div>
+            <div class="pane pane-night contact-side">
+                <h3>Prayer requests welcome</h3>
+                <p>If you’d like us to pray for something, write to the same address. It stays between us.</p>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="wrap">
+    <footer class="foot">
+        <div class="foot-links">
+            <p class="foot-name">Chi Rho Code LLC</p>
             <ul>
-                <li>© Chi Rho Code LLC</li>
-                <li><a href="mailto:help@chirhocode.com">help@chirhocode.com</a></li>
+                <li><a href="https://tossbaws.github.io/gospel-getter/">Gospel Getter</a></li>
+                <li><a href="server-sanctuary/">Server Sanctuary</a></li>
                 <li><a href="terms/">Terms</a></li>
                 <li><a href="privacy/">Privacy</a></li>
+                <li><a href="mailto:help@chirhocode.com">help@chirhocode.com</a></li>
             </ul>
+            <p class="small">© Chi Rho Code LLC. Scripture quotation from the World English Bible, which is in the public domain.</p>
+        </div>
+        <div class="foot-window" aria-hidden="true">
+            <img src="assets/brand/chi-rho-window-1600.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="">
         </div>
     </footer>
 </body>

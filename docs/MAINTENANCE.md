@@ -1,7 +1,8 @@
 # Maintaining chirhocode.com
 
-The site is plain static HTML and CSS in `site/`: no build step, no scripts, no web fonts, no
-third-party requests. Everything outside `site/` (this file, `tools/`, `checkout-links.json`) is
+The site is plain static HTML and CSS in `site/`: no build step, no scripts, no third-party
+requests. The home and Server Sanctuary pages self-host two openly licensed fonts (below); the
+terms and privacy pages still use system fonts and the old `site/styles.css`. Everything outside `site/` (this file, `tools/`, `checkout-links.json`) is
 never published.
 
 | Page | File |
@@ -11,8 +12,13 @@ never published.
 | `/terms/` licence terms (draft) | `site/terms/index.html` |
 | `/privacy/` | `site/privacy/index.html` |
 
-Shared: `site/styles.css`, `site/assets/mark.svg` (the Chi Rho mark, drawn for this site; also
-the favicon), `site/assets/og-server-sanctuary.png`, `site/assets/shots/*.webp`.
+Stylesheets: `site/brand.css` holds what the family shares (fonts, colours, header, panes,
+buttons, footer) and is linked first; then each page's own file, `site/home.css` or
+`site/server-sanctuary/sanctuary.css`. Terms and privacy still use `site/styles.css` and
+`site/assets/mark.svg` (a hand-drawn Chi Rho) until their round. Assets: the company mark in
+`site/assets/brand/`, fonts in `site/assets/fonts/`, Server Sanctuary captures in
+`site/assets/shots/`, Gospel Getter's reading screenshot in `site/assets/gospel-getter/`, and the
+social cards `og-home.png` and `og-server-sanctuary.png`.
 
 ## Preview locally
 
@@ -54,39 +60,43 @@ in one commit.
 ## Buy buttons: where the checkout URLs go
 
 `checkout-links.json` is the one place for the three Polar checkout links (Community, Pro, Pro
-Upgrade). While a `url` is empty, its button is a disabled "Available with 1.0" (an `<a>` with no
-`href` and `aria-disabled="true"`: not focusable, not clickable). When the Captain hands over the
-production checkout links:
+Upgrade). Since 1.0.0 all three hold the Captain's production links and the buttons are live. A
+tier whose `url` is empty gets a disabled "Available with 1.0" (an `<a>` with no `href` and
+`aria-disabled="true"`: not focusable, not clickable), so emptying a `url` is how to pause a
+product. To change a link:
 
-1. Put each link in its tier's `url` in `checkout-links.json` (an `https://` URL on `polar.sh`,
+1. Put the link in its tier's `url` in `checkout-links.json` (an `https://` URL on `polar.sh`,
    such as `https://buy.polar.sh/polar_cl_...`). Leave the labels unless the prices change.
 2. `python3 tools/set_checkout_links.py` rewrites the three buttons on
    `site/server-sanctuary/index.html` (live: gold, with the label and the link).
 3. `python3 tools/check_site.py --online`, then commit both files in one pull request.
 
 Don't edit the buttons by hand: the check fails when the page and the JSON disagree. Use the
-production links only, never sandbox ones.
+production links only, never sandbox ones. `check_site.py --online` opens each checkout link, and
+Polar starts a checkout session for every visit; they expire unused, but they show up among the
+shop's checkouts.
 
-## Release-time update (Server Sanctuary 1.0)
+## Each Server Sanctuary release
 
-Downloads come from the public releases-only repo (decision W2), whose name isn't decided yet.
-Until it exists and 1.0 is published, the Download section shows a disabled "Download available
-with 1.0" button and names no repo. At 1.0:
+Downloads come from the public releases-only repo `tossbaws/server-sanctuary-releases` (decision
+W2). The Download section links to `releases/latest/download/server_sanctuary-x86_64-linux-gnu`,
+to `SHA256SUMS` beside it, and to the `releases/latest` page; all three are in `KNOWN_TARGETS`
+(`tools/check_site.py`) and follow each new release by themselves. The buttons say "Download for
+Linux" with no version, so they stay true. What does name the version, and needs a hand edit
+after each release:
 
-1. Add the releases page URL to `KNOWN_TARGETS` in `tools/check_site.py`, for example
-   `https://github.com/tossbaws/<releases repo>/releases/latest`, and only once the repo is public
-   and the release is published.
-2. In `site/server-sanctuary/index.html`, replace the `data-download` button with a live link to
-   that URL, and keep the line about `SHA256SUMS` (add the `sha256sum -c SHA256SUMS` command if
-   useful).
-3. Fill in the checkout links (above).
-4. Remove or reword the 1.0 notes on that page: the "In development" line under the lede, "Available
-   with 1.0", the pre-1.0 wording in "What has run on a real host" (update it from the README's
-   section of the same name), and the screenshot captions if the shots are retaken.
-5. Terms: the refund window (14 days, W6) and the 2.0 rule (paid upgrade, discounted, W7) are
-   decided. Once the limitation-of-liability wording is reviewed, replace its "To be confirmed"
-   note in `site/terms/index.html` with the final text and remove the draft banner (W8 keeps it
-   until then).
+1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.0.0,
+   released 31 October 2026."
+2. `site/index.html`: the Server Sanctuary product's last point, "Version 1.0.0 is out".
+3. "What has run on a real host" on the Server Sanctuary page: update it from the README's section
+   of the same name, and its closing line ("Tested in October 2026, on the builds leading up to
+   the 1.0.0 release.").
+4. The screenshot captions, if the shots are retaken (see Asset provenance).
+
+Terms (not tied to a release): the refund window (14 days, W6) and the 2.0 rule (paid upgrade,
+discounted, W7) are decided. Once the limitation-of-liability wording is reviewed, replace its
+"To be confirmed" note in `site/terms/index.html` with the final text and remove the draft banner
+(W8 keeps it until then).
 
 Every product claim on the sales page comes from Server Sanctuary's README at `master` (a private
 repo) and the design docs in `~/Documents/server-sanctuary/design/`. When those change, the page
@@ -106,13 +116,31 @@ cropped from several shots or edited.
 | `shots/67-deploy_review-ready-valheim.webp` | `67-deploy_review-ready-valheim.png` | `58e4117`, test VM, 2026-10-14 | `df00edc994bbc93c0524168f7f1cfbac265e5abedd9e7401c540534b19102a85` |
 | `shots/57-settings_presets-fast-progress.webp` | `57-settings_presets-fast-progress.png` | `2d075c5` (#20), local isolated test setup (no Podman), 2026-10-12 | `6f9853b89f52f0b25c223ca8f950343199828759564bb22d76b820e403de7b6b` |
 | `shots/79-backups-list-valheim.webp` | `79-backups-list-valheim.png` | `58e4117`, test VM, 2026-10-14 | `6068182211e7d8f194da7b0be5ea212436c426484877e14100ce57e8d6d55fa6` |
-| `og-server-sanctuary.png` | `74-servers-up-valheim.png` | as above; scaled to 630 px high, padded to 1200×630 with the terminal's own background `rgb(30,30,46)`, 128-colour PNG | as above |
+| `shots/72-overview-boot-warmup-valheim.webp` | `72-overview-boot-warmup-valheim.png` | `58e4117`, test VM, 2026-10-14 | `2833f948079bc0e5b54b2d883898e27fa74aa0c8d23321cf79f49aa9be67e204` |
+| `brand/chi-rho-window-{128,480,960,1600}.webp`, `brand/favicon-{32,64}.png`, `brand/apple-touch-icon.png` | `~/Generated_Art/Brand_Attempts/2026-10-05_brand_chi-rho_C2_circuit-reliquary_polish.png` (the Captain's primary brand mark) | resized with `magick <png> -strip -resize NxN` (WebP quality 88, 92 for 128) | `a38236d8300c2df06a0be3a95b84b0e7f7f58365a9c8bc34ad48346dbfc997c7` |
+| `gospel-getter/reading-john-3.webp`, `gospel-getter/reading-john-3-700.webp` | `hero-1400.webp` and `hero-700.webp` in the gospel-getter repo's `site/assets/`, at `e85d598`; copied byte for byte | Gospel Getter's own site | `75084a06f7af…` and `0597b5898544…` (of the copies) |
+| `og-home.png` | the 960 px mark, "Chi Rho Code" in Source Serif 4 and the line in Instrument Sans | 1200×630 on black, ImageMagick with the two fonts converted to TTF by `woff2_decompress` | as above |
+| `og-server-sanctuary.png` | the 960 px mark and `74-servers-up-valheim.webp` | 1200×630 on `#0b0c0a`: the mark at 570 px from the left, the Servers screen 570 px wide on the right | as above |
 
 `mark.svg` is drawn by hand for this site (a gold Chi Rho on the page background); it is not
-the Chi Rho Code LLC logo used by Gospel Getter.
+the company mark. The Server Sanctuary page uses the company mark from `brand/`.
 
-All four shots predate the current build (the Servers list is now a table), so their captions
-say "pre-1.0 build". Retake them from a 1.0 build and update this table.
+The Server Sanctuary page shows the captures whole or as CSS crops of the unedited files (the
+six cells under "In every tier" place each file at a pixel offset inside a frame); no file is
+cropped, recoloured or edited.
+
+### Fonts (Server Sanctuary page)
+
+| File | Family | Licence | Source | sha256 |
+|---|---|---|---|---|
+| `fonts/source-serif-4-opsz.woff2` | Source Serif 4, variable (weight, optical size), Latin | SIL OFL 1.1, `fonts/OFL-source-serif-4.txt` | npm `@fontsource-variable/source-serif-4@5.3.1`, `files/source-serif-4-latin-opsz-normal.woff2` | `f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0` |
+| `fonts/instrument-sans-wght.woff2` | Instrument Sans, variable (weight), Latin | SIL OFL 1.1, `fonts/OFL-instrument-sans.txt` | npm `@fontsource-variable/instrument-sans@5.3.0`, `files/instrument-sans-latin-wght-normal.woff2` | `2ee17598a98d8a59e4df8152d015bec9ab8e4d5672cc0ab42bef806b568e3971` |
+
+The OFL allows self-hosting and redistribution with the licence kept beside the files. The
+Latin subsets have no Greek: write "Alpha" and "Omega" in words, not the letters.
+
+All four shots predate the 1.0.0 release (the Servers list is now a table), so their captions
+say "an earlier build". Retake them from a release build and update this table and the captions.
 
 ## Colours and accessibility
 
@@ -129,6 +157,61 @@ Primary button text `#1a140e` on gold: 10.8. Focus ring: 3 px gold. Every page h
 `header`/`nav`/`main`/`footer` landmarks and one `h1`; smooth scrolling is on only without
 `prefers-reduced-motion`, and nothing else moves. The layout was checked from 360 px to
 1280 px with no horizontal scroll (the tier tables stack below 48rem).
+
+## The home page (design of 2026-10-31)
+
+The first screen is the one centred moment on the site: the window itself, the mission as the
+`h1` ("Software made well, for the glory of God."), one sentence saying what the company is, and
+two actions. Then the two products in the window's own order (Gospel Getter on emerald, left;
+Server Sanctuary on teal, right), "Why we build" with four practices and Colossians 3:23-24, "The
+name in the window" (radio buttons that show close-ups of the mark, no script) and contact.
+
+- **Scripture on the page.** Colossians 3:23-24 is quoted exactly from the World English Bible
+  that Gospel Getter ships (`src-tauri/data/web.json` in tossbaws/gospel-getter), so the company
+  site and the product read the same. It was copied from that file, not retyped, on 2026-10-31.
+  Never retype or edit it. eBible.org's current edition (`engwebp`) has one comma fewer in verse
+  23 ("as for the Lord and not for men,"); neither text is wrong, and neither is edited.
+- **The close-ups' centres** are percentages of the mark (`--cx`, `--cy`, zoom `--z` in
+  `home.css`). A new mark needs them measured again.
+- **Links to Gospel Getter** use exactly `https://tossbaws.github.io/gospel-getter/`, the URL in
+  `KNOWN_TARGETS`; a `#download` fragment would need its own entry there.
+- `tools/test_check_site.py` edits the home page's Open Graph image and stylesheet link to break
+  it on purpose; if those lines change, update the two fixtures with them.
+
+## The Server Sanctuary page (design of 2026-10-31)
+
+The page is built as the company mark's stained-glass window: every section is a row of panes
+fitted edge to edge on a 12-column grid, and the 8 px gaps between them are the lead, in the
+mark's own leading colour. Colours are sampled from the mark (emerald on the left running to
+cyan on the right, gold for the one action), and the real terminal captures sit in the panes as
+the glass. The governing doc is `~/Documents/server-sanctuary/design/2026-10-30-site-design-review.md`
+(section "Round 2, 2026-10-31").
+
+- **No scripts.** The deploy review's part picker is six radio inputs and `:has()`; without
+  `:has()` every note shows and the capture stays whole. Motion is CSS only: a load sequence on
+  the first screen, scroll-driven entrances inside each pane (`animation-timeline: view()`), and
+  nothing moves under `prefers-reduced-motion`.
+- **The review's bands** are `clip-path: inset()` percentages of the 1312×704 capture, listed in
+  a comment in `sanctuary.css`. A retaken capture needs them measured again.
+- **Buy and download buttons** keep the exact markup the tools write; the live gold style for
+  `.button-primary` and the dark one inside the gold Community row are already in the stylesheet.
+
+| Text on | `#0b0c0a` black | `#121410` night | `#0c5734` emerald deep | `#0e704f` emerald | `#0b5c5f` teal deep |
+|---|---|---|---|---|---|
+| ink `#efeeea` | 16.9 | 16.0 | 7.4 | 5.2 | 6.7 |
+| soft `#c9c6ba` | 11.5 | 10.8 | | | |
+| gold `#f1cb75` | 12.6 | 11.9 | | | |
+
+Dark ink `#0b0c0a` on teal `#0ca3a3` 6.3, on cyan `#08dae4` 11.4, on gold 12.6. Terminal text
+`#cdd6f4` on `#1e1e2e` 11.3, its dim `#a6adc8` 7.4.
+
+Design check (optional, needs Node 22+ and Chromium):
+
+```sh
+node ~/.claude/skills/design-taste-frontend/scripts/inspect.mjs site/server-sanctuary/index.html --out .taste-skill/after
+```
+
+`.taste-skill/` is ignored by git.
 
 ## Stage 2: publishing and the domain (not done yet)
 

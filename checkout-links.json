@@ -1,14 +1,14 @@
 {
   "community": {
     "label": "Buy Community, $15",
-    "url": ""
+    "url": "https://buy.polar.sh/polar_cl_as78ioBQHlcCgNCoH7kY7aZcsccVzRHMjfgyP1sgtpJ"
   },
   "pro": {
     "label": "Buy Pro, $30",
-    "url": ""
+    "url": "https://buy.polar.sh/polar_cl_RRhn5QeiwgWi4csMBL17FATIMNu74e64vm2xX3GoqIa"
   },
   "pro-upgrade": {
     "label": "Buy Pro Upgrade, $15",
-    "url": ""
+    "url": "https://buy.polar.sh/polar_cl_2EBUExS718obAQCxIYNQ6D64nNj7e9k55cwjZ0fDtT9"
   }
 }

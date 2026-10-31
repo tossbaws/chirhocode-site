@@ -1,0 +1,516 @@
+/* Chi Rho Code home page. Shared colours, fonts, header, panes, buttons and footer are in
+   brand.css, linked before this file. The first screen is the one centred moment on the site:
+   the window itself. The products follow the window's own order, emerald on the left (Gospel
+   Getter) and cyan on the right (Server Sanctuary). No scripts: the mark's close-ups use radio
+   inputs and :has(). */
+
+/* ---------- The first screen ---------- */
+
+.pane-rose {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: max(36rem, calc(100svh - 6.5rem));
+    padding-block: clamp(2rem, 4vh, 3.5rem);
+    background: #000;
+    text-align: center;
+}
+
+.pane-rose > * + * {
+    margin-top: 0;
+}
+
+.rose {
+    width: min(36vh, 64vw, 28rem);
+    aspect-ratio: 1;
+}
+
+.home-hero h1 {
+    margin-top: clamp(1.25rem, 3vh, 2.25rem);
+    max-width: 15em;
+    font-size: clamp(2.1rem, 0.9rem + 5.2vw, 6.25rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-weight: 620;
+}
+
+.home-hero .statement {
+    margin-top: 1.25rem;
+    max-width: 52ch;
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    line-height: 1.3;
+    color: var(--ink-soft);
+}
+
+.home-hero .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 2rem;
+    margin-top: 1.75rem;
+}
+
+/* ---------- What we make ---------- */
+
+.products-head {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1rem var(--gap);
+    align-items: end;
+}
+
+.products-head h2 {
+    grid-column: 1 / 8;
+}
+
+.products-head p {
+    grid-column: 8 / 13;
+    margin: 0;
+    color: var(--ink-soft);
+}
+
+.product {
+    grid-column: span 6;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.product > * + * {
+    margin-top: 0;
+}
+
+.product-shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--black);
+}
+
+.product-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms var(--ease-out);
+}
+
+.product-shot-gg img {
+    object-position: 50% 0;
+}
+
+.product-shot-ss {
+    background: var(--term);
+}
+
+.product-shot-ss img {
+    object-fit: contain;
+    padding: clamp(0.75rem, 2vw, 1.75rem);
+}
+
+.product:hover .product-shot img {
+    transform: scale(1.03);
+}
+
+.product-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: var(--pad);
+}
+
+.product h3 {
+    font-size: var(--s-head);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.pitch {
+    margin-top: 1rem;
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    line-height: 1.25;
+    max-width: 30ch;
+}
+
+.product ul {
+    margin-top: 1.5rem;
+}
+
+.product-action {
+    margin-top: auto;
+    padding-top: 2rem;
+}
+
+.product .pane-teal-deep li::marker,
+.pane-teal-deep li::marker {
+    color: var(--cyan);
+}
+
+/* ---------- Why we build ---------- */
+
+.why-head {
+    grid-column: 1 / 7;
+    padding-top: calc(var(--pad) + 1.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.why-head > * + * {
+    margin-top: 0;
+}
+
+.why-head .statement {
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    line-height: 1.25;
+    max-width: 42ch;
+}
+
+.why-head p:last-child {
+    color: var(--ink-soft);
+}
+
+.practice-list {
+    grid-column: 7 / 13;
+    display: grid;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.practice-list > * + * {
+    margin-top: 0;
+}
+
+.practice {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 1rem 2rem;
+    align-items: baseline;
+    padding: 1.5rem 0;
+}
+
+.practice + .practice {
+    border-top: 4px solid var(--lead);
+}
+
+.practice p {
+    margin: 0;
+    color: var(--ink-soft);
+}
+
+.verse {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem var(--gap);
+    align-items: end;
+    padding-block: clamp(2.5rem, 2rem + 3vw, 5rem);
+}
+
+.verse blockquote {
+    grid-column: 1 / 10;
+    margin: 0;
+}
+
+.verse blockquote p {
+    max-width: 34ch;
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    line-height: 1.35;
+}
+
+.verse figcaption {
+    grid-column: 10 / 13;
+    justify-self: end;
+    font-size: var(--s-small);
+    color: var(--ink-soft);
+}
+
+/* ---------- The name in the window ---------- */
+
+.mark-stage {
+    grid-column: 1 / 7;
+    position: relative;
+    aspect-ratio: 1;
+    padding: 0;
+    background: #000;
+}
+
+.detail {
+    position: absolute;
+    left: calc(50% - var(--cx) * var(--z));
+    top: calc(50% - var(--cy) * var(--z));
+    width: calc(100% * var(--z));
+    max-width: none;
+    height: auto;
+    margin: 0;
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 500ms var(--ease-out), transform 900ms var(--ease-out);
+}
+
+.mark-stage > * + * {
+    margin-top: 0;
+}
+
+/* Centres measured on the 2048px mark: Alpha at 20.4% 50.8%, Omega at 80% 50.8%. */
+.detail-chirho { --z: 1.3; --cx: 51%; --cy: 46%; }
+.detail-alpha { --z: 3.4; --cx: 20.4%; --cy: 50.8%; }
+.detail-omega { --z: 3.4; --cx: 80%; --cy: 50.8%; }
+.detail-traces { --z: 2.6; --cx: 26%; --cy: 25%; }
+
+.mark:has(#glass-chirho:checked) .detail-chirho,
+.mark:has(#glass-alpha:checked) .detail-alpha,
+.mark:has(#glass-omega:checked) .detail-omega,
+.mark:has(#glass-traces:checked) .detail-traces {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@supports not selector(:has(a)) {
+    .detail-chirho { opacity: 1; transform: none; }
+}
+
+.mark-parts {
+    grid-column: 7 / 13;
+    min-width: 0;
+    margin: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mark-parts legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+}
+
+.mark-intro {
+    clear: both;
+    padding-top: 1rem;
+    color: var(--ink-soft);
+}
+
+.mark-choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    margin-top: 1.5rem;
+}
+
+.mark-choices input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.mark-choices label {
+    display: flex;
+    align-items: center;
+    min-height: 3.25rem;
+    padding: 0.25rem 1rem;
+    background: var(--black);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 200ms, color 200ms, transform 200ms var(--ease-out);
+}
+
+.mark-choices label:hover {
+    background: #1b1e18;
+    transform: translateY(-2px);
+}
+
+.mark-choices input:checked + label {
+    background: var(--gold);
+    color: var(--ink-dark);
+}
+
+.mark-choices input:focus-visible + label {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.mark-notes {
+    margin-top: 1.5rem;
+    min-height: 7.5rem;
+}
+
+.mark-notes p {
+    display: none;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.mark-parts:not(:has(input:checked)) [data-glass="chirho"],
+.mark-parts:has(#glass-chirho:checked) [data-glass="chirho"],
+.mark-parts:has(#glass-alpha:checked) [data-glass="alpha"],
+.mark-parts:has(#glass-omega:checked) [data-glass="omega"],
+.mark-parts:has(#glass-traces:checked) [data-glass="traces"] {
+    display: block;
+    animation: note-in 400ms var(--ease-out);
+}
+
+@keyframes note-in {
+    from { transform: translateY(8px); }
+}
+
+@supports not selector(:has(a)) {
+    .mark-notes p { display: block; }
+    .mark-notes p + p { margin-top: 0.75rem; }
+}
+
+/* ---------- Contact ---------- */
+
+.contact-main {
+    grid-column: 1 / 9;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 20rem;
+}
+
+.contact-main p {
+    max-width: 52ch;
+    color: var(--ink-dark-soft);
+}
+
+.contact-main a:not(.button) {
+    color: var(--ink-dark);
+    font-weight: 600;
+}
+
+.contact-main .button {
+    margin-top: 1.75rem;
+}
+
+.contact-side {
+    grid-column: 9 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.contact-side p {
+    color: var(--ink-soft);
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+    .rose {
+        animation:
+            settle 1800ms var(--ease-out) both,
+            breathe 16s ease-in-out 1800ms infinite alternate;
+    }
+
+    .home-hero h1 { animation: rise 1000ms var(--ease-out) 120ms both; }
+    .home-hero .statement { animation: rise 1000ms var(--ease-out) 220ms both; }
+    .home-hero .actions { animation: rise 1000ms var(--ease-out) 320ms both; }
+
+    @keyframes settle {
+        from { transform: scale(1.1) rotate(-4deg); }
+    }
+
+    @keyframes breathe {
+        to { transform: scale(1.035) rotate(1.5deg); }
+    }
+
+    @keyframes rise {
+        from { transform: translateY(28px); }
+    }
+
+    @supports (animation-timeline: view()) {
+        /* What is inside each pane rises into place; the lead lines never move. */
+        .board:not(.home-hero) > .pane > *,
+        .product-text > * {
+            animation: enter linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 75%;
+        }
+
+        .board:not(.home-hero) > .pane > :nth-child(2),
+        .product-text > :nth-child(2) { animation-range: entry 8% entry 83%; }
+        .board:not(.home-hero) > .pane > :nth-child(n + 3),
+        .product-text > :nth-child(n + 3) { animation-range: entry 16% entry 91%; }
+
+        .foot-window img {
+            animation: dawn linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 100%;
+        }
+
+        @keyframes enter {
+            from { transform: translateY(40px); }
+        }
+
+        @keyframes dawn {
+            from { transform: translateY(18%) rotate(-6deg); }
+        }
+    }
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 68rem) {
+    .products-head h2,
+    .products-head p { grid-column: 1 / 13; }
+
+    .product { grid-column: 1 / 13; }
+
+    .why-head,
+    .practice-list { grid-column: 1 / 13; }
+
+    .verse blockquote,
+    .verse figcaption { grid-column: 1 / 13; justify-self: start; }
+
+    .contact-main { grid-column: 1 / 13; min-height: 0; }
+    .contact-side { grid-column: 1 / 13; }
+}
+
+/* ---------- Phone ---------- */
+
+@media (max-width: 46rem) {
+    .pane-rose {
+        min-height: 0;
+        padding-block: 2.5rem;
+    }
+
+    .rose {
+        width: min(72vw, 20rem);
+    }
+
+    .home-hero .actions .button {
+        width: 100%;
+    }
+
+    .products-head,
+    .verse {
+        display: block;
+    }
+
+    .products-head p,
+    .verse figcaption {
+        margin-top: 1rem;
+    }
+
+    .practice {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .mark-choices label {
+        min-height: 3.5rem;
+    }
+}
