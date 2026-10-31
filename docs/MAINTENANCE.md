@@ -166,10 +166,11 @@ two actions. Then the two products in the window's own order (Gospel Getter on e
 Server Sanctuary on teal, right), "Why we build" with four practices and Colossians 3:23-24, "The
 name in the window" (radio buttons that show close-ups of the mark, no script) and contact.
 
-- **Scripture on the page.** Colossians 3:23-24 is quoted exactly from eBible.org's World English
-  Bible (`engwebp`), checked against both the chapter page and the official `engwebp_vpl.txt`
-  on 2026-10-31. Never retype or edit it. Gospel Getter's bundled `web.json` differs by one comma
-  in verse 23 ("as for the Lord, and not for men,"); that difference is reported, not fixed here.
+- **Scripture on the page.** Colossians 3:23-24 is quoted exactly from the World English Bible
+  that Gospel Getter ships (`src-tauri/data/web.json` in tossbaws/gospel-getter), so the company
+  site and the product read the same. It was copied from that file, not retyped, on 2026-10-31.
+  Never retype or edit it. eBible.org's current edition (`engwebp`) has one comma fewer in verse
+  23 ("as for the Lord and not for men,"); neither text is wrong, and neither is edited.
 - **The close-ups' centres** are percentages of the mark (`--cx`, `--cy`, zoom `--z` in
   `home.css`). A new mark needs them measured again.
 - **Links to Gospel Getter** use exactly `https://tossbaws.github.io/gospel-getter/`, the URL in
