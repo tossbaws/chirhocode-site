@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <title>Chi Rho</title>
-  <rect width="32" height="32" rx="7" fill="#0e1113"/>
-  <g fill="none" stroke="#f0c05a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M14 28V4h4.5a5 5 0 0 1 0 10H14"/>
-    <path d="M7.5 12.5l13 13M20.5 12.5l-13 13"/>
-  </g>
-</svg>
