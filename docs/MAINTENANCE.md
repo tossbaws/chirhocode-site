@@ -1,9 +1,8 @@
 # Maintaining chirhocode.com
 
 The site is plain static HTML and CSS in `site/`: no build step, no scripts, no third-party
-requests. The home and Server Sanctuary pages self-host two openly licensed fonts (below); the
-terms and privacy pages still use system fonts and the old `site/styles.css`. Everything outside `site/` (this file, `tools/`, `checkout-links.json`) is
-never published.
+requests. Every page self-hosts two openly licensed fonts (below). Everything outside `site/`
+(this file, `tools/`, `checkout-links.json`) is never published.
 
 | Page | File |
 |---|---|
@@ -13,9 +12,8 @@ never published.
 | `/privacy/` | `site/privacy/index.html` |
 
 Stylesheets: `site/brand.css` holds what the family shares (fonts, colours, header, panes,
-buttons, footer) and is linked first; then each page's own file, `site/home.css` or
-`site/server-sanctuary/sanctuary.css`. Terms and privacy still use `site/styles.css` and
-`site/assets/mark.svg` (a hand-drawn Chi Rho) until their round. Assets: the company mark in
+buttons, footer) and is linked first; then each page's own file: `site/home.css`,
+`site/server-sanctuary/sanctuary.css`, or `site/legal.css` for both terms and privacy. Assets: the company mark in
 `site/assets/brand/`, fonts in `site/assets/fonts/`, Server Sanctuary captures in
 `site/assets/shots/`, Gospel Getter's reading screenshot in `site/assets/gospel-getter/`, and the
 social cards `og-home.png` and `og-server-sanctuary.png`.
@@ -121,9 +119,6 @@ cropped from several shots or edited.
 | `gospel-getter/reading-john-3.webp`, `gospel-getter/reading-john-3-700.webp` | `hero-1400.webp` and `hero-700.webp` in the gospel-getter repo's `site/assets/`, at `e85d598`; copied byte for byte | Gospel Getter's own site | `75084a06f7af…` and `0597b5898544…` (of the copies) |
 | `og-home.png` | the 960 px mark, "Chi Rho Code" in Source Serif 4 and the line in Instrument Sans | 1200×630 on black, ImageMagick with the two fonts converted to TTF by `woff2_decompress` | as above |
 | `og-server-sanctuary.png` | the 960 px mark and `74-servers-up-valheim.webp` | 1200×630 on `#0b0c0a`: the mark at 570 px from the left, the Servers screen 570 px wide on the right | as above |
-
-`mark.svg` is drawn by hand for this site (a gold Chi Rho on the page background); it is not
-the company mark. The Server Sanctuary page uses the company mark from `brand/`.
 
 The Server Sanctuary page shows the captures whole or as CSS crops of the unedited files (the
 six cells under "In every tier" place each file at a pixel offset inside a frame); no file is
@@ -251,3 +246,19 @@ rest waits until the Captain says to point the domain. In order:
    replace `https://tossbaws.github.io/chirhocode-site/` with it in every page's `og:url` and
    `og:image`; run the checks and merge.
 7. Check `https://chirhocode.com/`, each page, and a link preview of `/server-sanctuary/`.
+
+## Terms and privacy (design of 2026-10-31)
+
+Both pages use `site/legal.css`: an emerald title pane beside the window, then a contents pane (sticky
+on wide screens) and the text pane. Below 46rem the window pane is hidden and each tier in the
+terms table becomes its own block, labelled from its cells' `data-label`.
+
+- **The wording is legal text.** The restyle changed only the frame around it. The visible text and
+  every link, `strong`, `th` and `td` inside `main` were compared with the old pages and are the same.
+  Change the words only with the Captain.
+- **The contents lists** repeat each page's `h2` text and ids by hand. A new or renamed section needs
+  its line there too.
+- **The design inspector's** "few pictures", "still page" and "no footage" findings are left on
+  purpose: these are pages to read, not to sell from. Its "off-centre" warning on terms is a
+  measurement of the text, not the frame; both pages share the same bar, board and footer.
+

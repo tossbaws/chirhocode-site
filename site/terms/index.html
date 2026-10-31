@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Server Sanctuary licence terms (draft) · Chi Rho Code LLC</title>
     <meta name="description" content="Plain-language licence terms for Server Sanctuary from version 1.0: the tiers, the 2-server Free limit, licence holds, moving a licence, offline use, payment and refunds through Polar. Draft under review.">
-    <meta name="theme-color" content="#0e1113">
+    <meta name="theme-color" content="#0b0c0a">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Chi Rho Code LLC">
     <meta property="og:title" content="Server Sanctuary licence terms (draft)">
@@ -17,135 +17,163 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Server Sanctuary's Servers screen in a terminal: a Valheim server marked UP with its start checklist done, beside a stopped Palworld server">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" type="image/svg+xml" href="../assets/mark.svg">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/brand/favicon-64.png">
+    <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+    <link rel="preload" href="../assets/fonts/source-serif-4-opsz.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/instrument-sans-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../brand.css">
+    <link rel="stylesheet" href="../legal.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
 
-    <header class="site-header">
-        <div class="wrap">
-            <a class="brand" href="../">
-                <img src="../assets/mark.svg" alt="" width="32" height="32">
-                <span>Chi Rho Code LLC</span>
-            </a>
-            <nav class="site-nav" aria-label="Main">
-                <ul>
-                    <li><a href="../server-sanctuary/">Server Sanctuary</a></li>
-                    <li><a href="../server-sanctuary/#pricing">Pricing</a></li>
-                    <li><a href="../server-sanctuary/#support">Support</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="bar">
+        <a class="maker" href="../">
+            <img src="../assets/brand/chi-rho-window-128.webp" alt="" width="40" height="40">
+            <span>Chi Rho Code</span>
+        </a>
+        <nav aria-label="Main">
+            <ul>
+                <li><a href="../server-sanctuary/">Server Sanctuary</a></li>
+                <li><a href="../server-sanctuary/#pricing">Pricing</a></li>
+                <li><a href="../server-sanctuary/#support">Support</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main id="main" tabindex="-1">
-        <article class="wrap narrow prose" aria-labelledby="page-title">
-            <h1 id="page-title">Server Sanctuary licence terms</h1>
-
-            <div class="note" role="note">
-                <p><strong>Draft.</strong> These terms may still change before Server Sanctuary 1.0. The limitation-of-liability wording, marked <strong>To be confirmed</strong>, is still being reviewed.</p>
+        <div class="board legal-head">
+            <div class="pane legal-title">
+                <h1 id="page-title">Server Sanctuary licence terms</h1>
+                <div class="note" role="note">
+                    <p><strong>Draft.</strong> These terms may still change before Server Sanctuary 1.0. The limitation-of-liability wording, marked <strong>To be confirmed</strong>, is still being reviewed.</p>
+                </div>
             </div>
+            <div class="pane legal-window" aria-hidden="true">
+                <img src="../assets/brand/chi-rho-window-480.webp" width="480" height="480" alt="">
+            </div>
+        </div>
 
-            <p>Server Sanctuary is made by Chi Rho Code LLC (“we”). These terms cover the Server Sanctuary program from version 1.0 on. Versions before 1.0 were a free preview and have no limits.</p>
+        <div class="board legal">
+            <nav class="pane pane-black legal-toc" aria-label="On this page">
+                <p class="small">On this page</p>
+                <ol>
+                    <li><a href="#tiers">Tiers</a></li>
+                    <li><a href="#machines">Machines and moving a licence</a></li>
+                    <li><a href="#offline">Offline use</a></li>
+                    <li><a href="#fall-back">When a machine falls back to Free</a></li>
+                    <li><a href="#data">What the program sends</a></li>
+                    <li><a href="#payment">Payment and refunds</a></li>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#warranty">No warranty</a></li>
+                    <li><a href="#changes">Changes</a></li>
+                </ol>
+            </nav>
+            <article class="pane legal-text" aria-labelledby="page-title">
+                <p>Server Sanctuary is made by Chi Rho Code LLC (“we”). These terms cover the Server Sanctuary program from version 1.0 on. Versions before 1.0 were a free preview and have no limits.</p>
 
-            <h2 id="tiers">Tiers</h2>
-            <table class="stack-table">
-                <caption class="visually-hidden">Licence tiers</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Tier</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Game servers per machine</th>
-                        <th scope="col">Machines</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Free</th>
-                        <td data-label="Price">$0</td>
-                        <td data-label="Game servers per machine">2</td>
-                        <td data-label="Machines">any number</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Community</th>
-                        <td data-label="Price">$15, one time</td>
-                        <td data-label="Game servers per machine">unlimited</td>
-                        <td data-label="Machines">up to 5</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Pro</th>
-                        <td data-label="Price">$30, one time</td>
-                        <td data-label="Game servers per machine">unlimited</td>
-                        <td data-label="Machines">up to 25</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Pro Upgrade</th>
-                        <td data-label="Price">$15, one time</td>
-                        <td data-label="Game servers per machine">turns a Community licence into Pro</td>
-                        <td data-label="Machines">up to 25</td>
-                    </tr>
-                </tbody>
-            </table>
-            <ul>
-                <li>A licence is for one person (single user). It is not a subscription.</li>
-                <li>Pro adds the convenience features for running many servers: the multi-machine view, ban everywhere, bulk settings and the Players screen. Everything that keeps a single server safe and working is in every tier, Free included: crash restarts, game updates, backups and scheduled backups, every supported game.</li>
-                <li>Pro Upgrade: a machine is Pro when it holds a valid Community key and a valid Pro Upgrade key bought by the same customer.</li>
-                <li>A licence covers every 1.x version of Server Sanctuary. Version 2.0, when it comes, will be a paid upgrade with a discount for existing owners; we will announce the amount with 2.0.</li>
-            </ul>
+                <h2 id="tiers">Tiers</h2>
+                <table class="stack-table">
+                    <caption class="visually-hidden">Licence tiers</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Tier</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Game servers per machine</th>
+                            <th scope="col">Machines</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Free</th>
+                            <td data-label="Price">$0</td>
+                            <td data-label="Game servers per machine">2</td>
+                            <td data-label="Machines">any number</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Community</th>
+                            <td data-label="Price">$15, one time</td>
+                            <td data-label="Game servers per machine">unlimited</td>
+                            <td data-label="Machines">up to 5</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Pro</th>
+                            <td data-label="Price">$30, one time</td>
+                            <td data-label="Game servers per machine">unlimited</td>
+                            <td data-label="Machines">up to 25</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Pro Upgrade</th>
+                            <td data-label="Price">$15, one time</td>
+                            <td data-label="Game servers per machine">turns a Community licence into Pro</td>
+                            <td data-label="Machines">up to 25</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul>
+                    <li>A licence is for one person (single user). It is not a subscription.</li>
+                    <li>Pro adds the convenience features for running many servers: the multi-machine view, ban everywhere, bulk settings and the Players screen. Everything that keeps a single server safe and working is in every tier, Free included: crash restarts, game updates, backups and scheduled backups, every supported game.</li>
+                    <li>Pro Upgrade: a machine is Pro when it holds a valid Community key and a valid Pro Upgrade key bought by the same customer.</li>
+                    <li>A licence covers every 1.x version of Server Sanctuary. Version 2.0, when it comes, will be a paid upgrade with a discount for existing owners; we will announce the amount with 2.0.</li>
+                </ul>
 
-            <h2 id="machines">Machines and moving a licence</h2>
-            <ul>
-                <li>Adding your key to a machine uses one of its machine slots. The program checks with our payment provider, Polar, when it starts and once a day.</li>
-                <li>You can move a licence: “Release this machine” in the program frees its slot. A machine must hold its slot for 7 days before it can release it.</li>
-                <li>If a machine is lost, wiped or reinstalled and still holds a slot, email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a> and we free it for you.</li>
-            </ul>
+                <h2 id="machines">Machines and moving a licence</h2>
+                <ul>
+                    <li>Adding your key to a machine uses one of its machine slots. The program checks with our payment provider, Polar, when it starts and once a day.</li>
+                    <li>You can move a licence: “Release this machine” in the program frees its slot. A machine must hold its slot for 7 days before it can release it.</li>
+                    <li>If a machine is lost, wiped or reinstalled and still holds a slot, email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a> and we free it for you.</li>
+                </ul>
 
-            <h2 id="offline">Offline use</h2>
-            <ul>
-                <li>The program keeps working offline. A successful check is good for 30 days; the program warns you during the last 7. After 30 days without a check, the machine runs as Free until it can check again.</li>
-                <li>If your computer’s clock is wrong (earlier than the last check), nothing changes until the next successful check.</li>
-            </ul>
+                <h2 id="offline">Offline use</h2>
+                <ul>
+                    <li>The program keeps working offline. A successful check is good for 30 days; the program warns you during the last 7. After 30 days without a check, the machine runs as Free until it can check again.</li>
+                    <li>If your computer’s clock is wrong (earlier than the last check), nothing changes until the next successful check.</li>
+                </ul>
 
-            <h2 id="fall-back">When a machine falls back to Free</h2>
-            <p>A machine falls back to Free when its licence is no longer valid. For example: you released it, the key was refunded or revoked, or it was offline for more than 30 days.</p>
-            <ul>
-                <li>If the key stops being valid while the machine is online, you get 24 hours’ warning first.</li>
-                <li>On Free, a machine runs at most 2 game servers. You can pick which 2 keep running; otherwise the 2 oldest do. The others are put on a licence hold: stopped cleanly with the world saved, and kept stopped.</li>
-                <li>A held server is never deleted. You can still view it, read its log, back it up, ban players on it and remove it. You can’t start, restart, restore or reconfigure it until the hold lifts.</li>
-                <li>The hold lifts when the machine is licensed again or runs 2 servers or fewer. Held servers then stay stopped until you start them.</li>
-                <li>A machine that had 3 or more servers before 1.0 gets the same 24 hours’ warning.</li>
-            </ul>
+                <h2 id="fall-back">When a machine falls back to Free</h2>
+                <p>A machine falls back to Free when its licence is no longer valid. For example: you released it, the key was refunded or revoked, or it was offline for more than 30 days.</p>
+                <ul>
+                    <li>If the key stops being valid while the machine is online, you get 24 hours’ warning first.</li>
+                    <li>On Free, a machine runs at most 2 game servers. You can pick which 2 keep running; otherwise the 2 oldest do. The others are put on a licence hold: stopped cleanly with the world saved, and kept stopped.</li>
+                    <li>A held server is never deleted. You can still view it, read its log, back it up, ban players on it and remove it. You can’t start, restart, restore or reconfigure it until the hold lifts.</li>
+                    <li>The hold lifts when the machine is licensed again or runs 2 servers or fewer. Held servers then stay stopped until you start them.</li>
+                    <li>A machine that had 3 or more servers before 1.0 gets the same 24 hours’ warning.</li>
+                </ul>
 
-            <h2 id="data">What the program sends</h2>
-            <p>To check a licence, the program sends Polar your licence key, a label (the machine’s host name) and a one-way hash of the machine’s ID, plus the program’s version. It sends nothing about your game servers, players or worlds. There are no analytics or trackers.</p>
+                <h2 id="data">What the program sends</h2>
+                <p>To check a licence, the program sends Polar your licence key, a label (the machine’s host name) and a one-way hash of the machine’s ID, plus the program’s version. It sends nothing about your game servers, players or worlds. There are no analytics or trackers.</p>
 
-            <h2 id="payment">Payment and refunds</h2>
-            <ul>
-                <li>Polar (polar.sh) sells Server Sanctuary as our merchant of record and handles payment, tax and receipts.</li>
-                <li>Refunds: within 14 days of purchase, no questions asked. Email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a> or use your order page on Polar. A refunded key stops working, and machines using it fall back to Free as described above.</li>
-            </ul>
+                <h2 id="payment">Payment and refunds</h2>
+                <ul>
+                    <li>Polar (polar.sh) sells Server Sanctuary as our merchant of record and handles payment, tax and receipts.</li>
+                    <li>Refunds: within 14 days of purchase, no questions asked. Email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a> or use your order page on Polar. A refunded key stops working, and machines using it fall back to Free as described above.</li>
+                </ul>
 
-            <h2 id="support">Support</h2>
-            <p>Email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a>. We aim to answer within 48 hours.</p>
+                <h2 id="support">Support</h2>
+                <p>Email <a href="mailto:help@chirhocode.com">help@chirhocode.com</a>. We aim to answer within 48 hours.</p>
 
-            <h2 id="warranty">No warranty</h2>
-            <p>Server Sanctuary is provided as is, without warranty of any kind. It runs game servers with rootless Podman on your own Linux machine; keep your own backups of anything that matters.</p>
-            <p class="tbc"><strong>To be confirmed:</strong> limitation-of-liability wording, to be checked by someone qualified.</p>
+                <h2 id="warranty">No warranty</h2>
+                <p>Server Sanctuary is provided as is, without warranty of any kind. It runs game servers with rootless Podman on your own Linux machine; keep your own backups of anything that matters.</p>
+                <p class="tbc"><strong>To be confirmed:</strong> limitation-of-liability wording, to be checked by someone qualified.</p>
 
-            <h2 id="changes">Changes</h2>
-            <p>We may update these terms for future versions. The terms that came with the version you bought apply to it.</p>
-        </article>
+                <h2 id="changes">Changes</h2>
+                <p>We may update these terms for future versions. The terms that came with the version you bought apply to it.</p>
+            </article>
+        </div>
     </main>
 
-    <footer class="site-footer">
-        <div class="wrap">
+    <footer class="foot">
+        <div class="foot-links">
+            <p class="foot-name">Chi Rho Code LLC</p>
             <ul>
-                <li>© Chi Rho Code LLC</li>
-                <li><a href="mailto:help@chirhocode.com">help@chirhocode.com</a></li>
+                <li><a href="https://tossbaws.github.io/gospel-getter/">Gospel Getter</a></li>
+                <li><a href="../server-sanctuary/">Server Sanctuary</a></li>
                 <li><a href="./" aria-current="page">Terms</a></li>
                 <li><a href="../privacy/">Privacy</a></li>
+                <li><a href="mailto:help@chirhocode.com">help@chirhocode.com</a></li>
             </ul>
+            <p class="small">© Chi Rho Code LLC</p>
         </div>
     </footer>
 </body>

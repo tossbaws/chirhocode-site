@@ -1,0 +1,275 @@
+/* Terms and privacy: a title pane beside the window, then a contents pane and the text pane.
+   Linked after brand.css. The wording on these pages is legal text; restyle it, never reword it. */
+
+.legal-head {
+    margin-top: var(--gap);
+}
+
+.legal-title {
+    grid-column: 1 / 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.25rem;
+    min-height: clamp(16rem, 24vw, 22rem);
+    background: var(--emerald-deep);
+}
+
+.legal-title h1 {
+    max-width: 18ch;
+    font-size: clamp(2.5rem, 1.6rem + 3.4vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+}
+
+.legal-title > * + * {
+    margin-top: 0;
+}
+
+.legal-title .small {
+    color: var(--ink);
+}
+
+.legal-title .note {
+    max-width: 62ch;
+    padding: 1rem 1.25rem;
+    background: var(--black);
+}
+
+.legal-window {
+    grid-column: 9 / 13;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: #000;
+}
+
+.legal-window img {
+    width: 88%;
+    max-width: 22rem;
+}
+
+.legal {
+    align-items: start;
+}
+
+.legal-toc {
+    grid-column: 1 / 4;
+    position: sticky;
+    top: var(--edge);
+}
+
+.legal-toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: part;
+}
+
+.legal-toc li {
+    counter-increment: part;
+}
+
+.legal-toc li + li {
+    margin-top: 0.25rem;
+}
+
+.legal-toc a {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 200ms;
+}
+
+.legal-toc a::before {
+    content: counter(part);
+    min-width: 1.25rem;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+}
+
+.legal-toc a:hover {
+    color: var(--ink);
+}
+
+.legal-text {
+    grid-column: 4 / 13;
+    padding-bottom: calc(var(--pad) * 1.5);
+}
+
+.legal-text h2 {
+    margin-top: 2.75rem;
+    font-size: var(--s-state);
+    line-height: 1.15;
+    scroll-margin-top: var(--edge);
+}
+
+.legal-text h2:first-child,
+.legal-text > p:first-child {
+    margin-top: 0;
+}
+
+.legal-text h2 + * {
+    margin-top: 1rem;
+}
+
+.legal-text ul {
+    max-width: 68ch;
+    padding-left: 1.25rem;
+}
+
+.legal-text li + li {
+    margin-top: 0.6rem;
+}
+
+.legal-text li::marker {
+    color: var(--gold);
+}
+
+.legal-text a {
+    text-decoration-color: var(--gold);
+}
+
+.legal-text a:hover {
+    color: var(--gold-glow);
+}
+
+.legal-text .tbc {
+    padding: 1rem 1.25rem;
+    background: var(--teal-deep);
+}
+
+/* The tier table: each row is a strip of glass, with lead between the rows. */
+.legal-text table {
+    width: 100%;
+    max-width: 52rem;
+    border-collapse: separate;
+    border-spacing: 0 var(--gap);
+    margin-top: 0.5rem;
+}
+
+.legal-text th,
+.legal-text td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.legal-text thead th {
+    padding-top: 0;
+    padding-bottom: 0;
+    color: var(--ink-soft);
+    font-size: var(--s-small);
+    font-weight: 600;
+}
+
+.legal-text tbody th,
+.legal-text tbody td {
+    background: var(--black);
+}
+
+.legal-text tbody th {
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Motion, as on the home page: the title rises and the window settles once, on load. The text
+   itself never moves, so reading starts at once. */
+@media (prefers-reduced-motion: no-preference) {
+    .legal-title > * {
+        animation: rise 1000ms var(--ease-out) both;
+    }
+
+    .legal-title > :nth-child(2) {
+        animation-delay: 100ms;
+    }
+
+    .legal-window img {
+        animation: settle 1400ms var(--ease-out) both;
+    }
+
+    @keyframes rise {
+        from { transform: translateY(28px); }
+    }
+
+    @keyframes settle {
+        from { transform: scale(1.1) rotate(-4deg); }
+    }
+}
+
+@media (max-width: 68rem) {
+    .legal-title {
+        grid-column: 1 / 10;
+    }
+
+    .legal-window {
+        grid-column: 10 / 13;
+    }
+
+    .legal-toc {
+        grid-column: 1 / -1;
+        position: static;
+    }
+
+    .legal-toc ol {
+        columns: 2;
+        column-gap: 2rem;
+    }
+
+    .legal-text {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Below 46rem each tier becomes its own block, with its labels (data-label). */
+@media (max-width: 46rem) {
+    .legal-title {
+        min-height: 0;
+        padding-top: calc(var(--pad) * 1.5);
+    }
+
+    .legal-window {
+        display: none;
+    }
+
+    .legal-toc ol {
+        columns: 1;
+    }
+
+    .legal-text thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .legal-text table,
+    .legal-text tbody,
+    .legal-text tr,
+    .legal-text th,
+    .legal-text td {
+        display: block;
+    }
+
+    .legal-text tr {
+        margin-top: var(--gap);
+        padding: 0.85rem 1rem;
+        background: var(--black);
+    }
+
+    .legal-text tbody th,
+    .legal-text tbody td {
+        padding: 0.2rem 0;
+    }
+
+    .legal-text td[data-label]::before {
+        content: attr(data-label) ": ";
+        color: var(--ink-soft);
+    }
+}
