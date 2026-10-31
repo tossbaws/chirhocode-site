@@ -1,0 +1,1072 @@
+/* Server Sanctuary page. Shared colours, fonts, header, panes, buttons and footer are in
+   ../brand.css, linked before this file.
+
+   Server Sanctuary: the page as a stained-glass window.
+   Every section is a row of panes fitted edge to edge; the 8px gaps between them are the
+   lead, in the colour of the mark's own leading. Colours are sampled from the Chi Rho mark
+   (assets/brand/chi-rho-window-*.webp): black ground, emerald on the left running to cyan on
+   the right, gold for the one action. Real terminal captures sit in the panes as the glass.
+   No scripts: the live review uses radio inputs and :has(); motion is CSS only. */
+
+/* ---------- The first screen ---------- */
+
+.hero .pane-name {
+    grid-column: 1 / 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: max(31rem, calc(100svh - 17rem));
+    background: var(--black);
+}
+
+.hero h1 {
+    font-size: var(--s-display);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    font-weight: 620;
+    margin-bottom: auto;
+    padding-top: 0.1em;
+}
+
+.hero .rise {
+    display: inline-block;
+}
+
+.statement {
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    font-weight: 400;
+    line-height: 1.25;
+    max-width: 36ch;
+}
+
+.pane .statement {
+    margin-top: 2.5rem;
+}
+
+.support {
+    max-width: 52ch;
+    color: var(--ink-soft);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 2rem;
+}
+
+.pane .actions {
+    margin-top: 2rem;
+}
+
+.pane-window {
+    grid-column: 8 / 13;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 3vw, 3rem);
+    background: #000;
+}
+
+.pane-window .window {
+    width: 100%;
+    max-width: 44rem;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+.fact {
+    grid-column: span 4;
+    display: block;
+    font-size: var(--s-body);
+    line-height: 1.4;
+    text-decoration: none;
+}
+
+.fact span {
+    display: inline;
+}
+
+.fact .fact-big {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: var(--s-state);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+a.fact {
+    transition: background-color 200ms;
+}
+
+a.fact:hover {
+    background: #12805b;
+}
+
+/* ---------- The Servers screen, large ---------- */
+
+.shutter {
+    grid-column: 1 / 9;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.term-scroll {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    padding: clamp(0.5rem, 2vw, 2rem);
+}
+
+.term-scroll a {
+    display: block;
+}
+
+.strip {
+    margin: 0;
+    padding: 0.55rem var(--pad);
+    background: var(--gold);
+    color: var(--ink-dark);
+    font-size: var(--s-small);
+    line-height: 1.4;
+}
+
+.pane-note {
+    grid-column: 9 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.pane-note p {
+    color: var(--ink-soft);
+}
+
+/* ---------- The review, part by part (the live thing) ---------- */
+
+.review-head {
+    grid-column: 1 / 5;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.review-head p {
+    color: var(--ink-soft);
+}
+
+.review-stage {
+    grid-column: 5 / 13;
+    grid-row: 1 / 3;
+    display: grid;
+    place-items: center;
+    padding: clamp(0.5rem, 2vw, 2rem);
+}
+
+.review-stage img {
+    grid-area: 1 / 1;
+    width: 100%;
+}
+
+.review-base {
+    opacity: 1;
+    transition: opacity 400ms var(--ease-out);
+}
+
+.review-lit {
+    position: relative;
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 550ms var(--ease-in-out);
+}
+
+/* Rows of the capture (1312x704): READY and Checked 92-152, Creates 152-272,
+   Runs 272-452, Password 452-532, Not checked 532-592; text from x 14 to 1232. */
+.review:has(#part-checked:checked) .review-lit { clip-path: inset(13.07% 6.1% 78.84% 1.07%); }
+.review:has(#part-creates:checked) .review-lit { clip-path: inset(21.31% 6.1% 61.79% 1.07%); }
+.review:has(#part-runs:checked) .review-lit { clip-path: inset(38.35% 6.1% 36.36% 1.07%); }
+.review:has(#part-password:checked) .review-lit { clip-path: inset(63.92% 6.1% 24.86% 1.07%); }
+.review:has(#part-unchecked:checked) .review-lit { clip-path: inset(75.28% 6.1% 16.19% 1.07%); }
+
+.review:has(.review-parts input:not(#part-all):checked) .review-base {
+    opacity: 0.22;
+}
+
+.review-parts {
+    grid-column: 1 / 5;
+    grid-row: 2;
+    min-width: 0;
+    border: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-content: start;
+}
+
+.review-parts legend {
+    float: left;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: var(--s-small);
+    color: var(--ink-soft);
+}
+
+.review-parts input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.review-parts label {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    margin: 0;
+    padding: 0.25rem 1rem;
+    background: var(--night);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 200ms, color 200ms, transform 200ms var(--ease-out);
+}
+
+.review-parts label + input + label {
+    margin-top: 4px;
+}
+
+.review-parts label:hover {
+    transform: translateX(4px);
+    background: #1b1e18;
+}
+
+.review-parts input:checked + label {
+    background: var(--gold);
+    color: var(--ink-dark);
+}
+
+.review-parts input:focus-visible + label {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.part-notes {
+    margin-top: 1.25rem;
+    min-height: 6.5rem;
+}
+
+.part-notes p {
+    display: none;
+}
+
+.review-parts:not(:has(input:checked)) .part-notes [data-part="all"],
+.review-parts:has(#part-all:checked) .part-notes [data-part="all"],
+.review-parts:has(#part-checked:checked) .part-notes [data-part="checked"],
+.review-parts:has(#part-creates:checked) .part-notes [data-part="creates"],
+.review-parts:has(#part-runs:checked) .part-notes [data-part="runs"],
+.review-parts:has(#part-password:checked) .part-notes [data-part="password"],
+.review-parts:has(#part-unchecked:checked) .part-notes [data-part="unchecked"] {
+    display: block;
+    animation: note-in 400ms var(--ease-out);
+}
+
+@keyframes note-in {
+    from { transform: translateY(8px); }
+}
+
+/* Without :has(), every note shows and the capture stays whole. */
+@supports not selector(:has(a)) {
+    .part-notes p { display: block; }
+    .part-notes p + p { margin-top: 0.5rem; }
+}
+
+/* ---------- Every tier: six cells ---------- */
+
+.cells-head {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1rem var(--gap);
+    align-items: end;
+}
+
+.cells-head h2 {
+    grid-column: 1 / 8;
+}
+
+.cells-head p {
+    grid-column: 8 / 13;
+    margin: 0;
+}
+
+.cell {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 28rem;
+    padding: 0;
+}
+
+.cell > * + * {
+    margin-top: 0;
+}
+
+.cell-text {
+    padding: var(--pad);
+}
+
+.cell-text p {
+    margin-top: 0.75rem;
+    color: var(--ink-soft);
+}
+
+.frag {
+    position: relative;
+    height: 13.5rem;
+    margin: 0;
+    background: var(--term);
+    overflow: hidden;
+}
+
+.frag {
+    --k: 0.92;
+}
+
+.frag img {
+    position: absolute;
+    left: calc(var(--x, 0px) * var(--k));
+    top: calc(var(--y, 0px) * var(--k));
+    width: calc(1312px * var(--k));
+    max-width: none;
+    height: auto;
+}
+
+.frag-code {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem var(--pad);
+    color: var(--term-ink);
+    font-size: var(--s-small);
+    line-height: 1.75;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.frag-code code {
+    font-size: inherit;
+}
+
+.prompt {
+    color: var(--term-green);
+}
+
+/* ---------- From saved to UP: four fields, emerald to cyan ---------- */
+
+.fields {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--gap);
+    max-width: var(--max);
+    width: calc(100% - 2 * var(--edge));
+    margin: var(--gap) auto 0;
+}
+
+.field {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1.5rem;
+    min-height: min(72svh, 46rem);
+    padding: var(--pad);
+}
+
+.field h2 {
+    grid-row: 1;
+}
+
+.field .tui {
+    grid-row: 2;
+    align-self: center;
+}
+
+.field .clause {
+    grid-row: 3;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    line-height: 1.25;
+}
+
+.field-1 { background: var(--emerald-deep); }
+.field-2 { background: var(--emerald); }
+.field-3 { background: var(--teal); color: var(--ink-dark); }
+.field-4 { background: var(--cyan); color: var(--ink-dark); }
+
+.tui {
+    display: block;
+    padding: 1rem 1.1rem;
+    background: var(--term);
+    color: var(--term-ink);
+    font-size: var(--s-small);
+    line-height: 1.6;
+    transition: transform 150ms var(--ease-out);
+}
+
+.field:hover .tui {
+    transform: translateY(-6px);
+}
+
+.tui .dim { color: var(--term-dim); }
+.tui .tag { font-weight: 700; }
+.tui .tag-dim { color: var(--term-dim); }
+.tui .tag-yellow { color: var(--term-yellow); }
+.tui .tag-green { color: var(--term-green); }
+
+/* ---------- Pro ---------- */
+
+.pro-head {
+    grid-column: 1 / 5;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pro-head p {
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    line-height: 1.25;
+    max-width: 22ch;
+}
+
+.pro-list {
+    grid-column: 5 / 13;
+    grid-row: 1 / 3;
+    display: grid;
+    gap: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.pro-list > * + * {
+    margin-top: 0;
+}
+
+.pro-row {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 1rem 2rem;
+    align-items: baseline;
+    padding: 1.5rem 0;
+}
+
+.pro-row + .pro-row {
+    border-top: 4px solid var(--lead);
+}
+
+.pro-row h3 {
+    font-size: var(--s-state);
+}
+
+.pro-row p {
+    margin: 0;
+    color: var(--ink-soft);
+}
+
+/* ---------- Pricing ---------- */
+
+.pricing-head {
+    grid-column: 1 / 7;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.pricing-head h2 {
+    font-size: var(--s-display);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+}
+
+.pricing-head p {
+    color: var(--ink-soft);
+    max-width: 46ch;
+}
+
+.choose {
+    grid-column: 7 / 13;
+    grid-row: 1;
+}
+
+.choose ul {
+    padding: 0;
+    list-style: none;
+}
+
+.choose li + li {
+    margin-top: 0.85rem;
+}
+
+.pricing-table {
+    grid-column: 1 / 13;
+    grid-row: 2;
+    padding: 0;
+}
+
+.pricing table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--s-body);
+}
+
+.pricing thead th {
+    padding: 1.25rem var(--pad) 0.75rem;
+    font-family: var(--sans);
+    font-size: var(--s-body);
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-align: left;
+}
+
+.pricing tbody th,
+.pricing tbody td {
+    padding: 1.4rem var(--pad);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.pricing tbody tr:nth-child(odd) {
+    background: var(--night);
+}
+
+.pricing tbody th {
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pricing .price {
+    font-family: var(--serif);
+    font-size: var(--s-state);
+    font-weight: 600;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.pricing tbody tr.rec {
+    background: var(--gold);
+    color: var(--ink-dark);
+}
+
+.pricing .buy {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.pricing .buy .button-primary {
+    background: var(--gold);
+    color: var(--ink-dark);
+}
+
+.pricing tr.rec .buy .button-primary {
+    background: var(--ink-dark);
+    color: var(--gold);
+}
+
+.fine-free { grid-column: 1 / 6; }
+.fine-machines { grid-column: 6 / 10; }
+.fine-pay { grid-column: 10 / 13; }
+
+.fine p {
+    color: var(--ink-soft);
+}
+
+.fine p + p {
+    margin-top: 0.85rem;
+}
+
+/* ---------- Requirements and limits ---------- */
+
+.needs-head {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1rem var(--gap);
+    align-items: end;
+}
+
+.needs-head h2 {
+    grid-column: 1 / 8;
+}
+
+.needs-head p {
+    grid-column: 8 / 13;
+    margin: 0;
+}
+
+.need-list { grid-column: 1 / 6; }
+
+.limits { grid-column: 6 / 13; }
+
+.limits ul {
+    columns: 2 18rem;
+    column-gap: 2.5rem;
+}
+
+.limits li {
+    break-inside: avoid;
+}
+
+.tested { grid-column: 1 / 9; }
+
+.download {
+    grid-column: 9 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.needs article li {
+    color: var(--ink);
+}
+
+.needs article > p {
+    color: var(--ink-soft);
+}
+
+.needs .download > p {
+    color: var(--ink);
+}
+
+/* ---------- Questions ---------- */
+
+.bands {
+    display: grid;
+    gap: var(--gap);
+    max-width: var(--max);
+    width: calc(100% - 2 * var(--edge));
+    margin: var(--gap) auto 0;
+}
+
+.band {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1rem var(--gap);
+    padding: clamp(2rem, 1.5rem + 2vw, 3.5rem) var(--pad);
+    background: var(--night);
+}
+
+.band:nth-child(odd) {
+    background: var(--black);
+}
+
+.band h3 {
+    grid-column: 1 / 6;
+}
+
+.band p {
+    grid-column: 7 / 13;
+}
+
+.band-head {
+    min-height: 34svh;
+    align-items: end;
+    background: var(--emerald-deep);
+}
+
+.band.band-head {
+    background: var(--emerald-deep);
+}
+
+.band-head h2 {
+    grid-column: 1 / 13;
+    font-size: var(--s-display);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+}
+
+/* ---------- The close ---------- */
+
+.pane-window-crop {
+    grid-column: 1 / 4;
+    padding: 0;
+    background: #000;
+    min-height: 22rem;
+}
+
+.pane-window-crop img {
+    position: absolute;
+    left: -12%;
+    top: 50%;
+    width: 210%;
+    max-width: none;
+    transform: translateY(-50%);
+}
+
+.close-action {
+    grid-column: 4 / 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.close-action p {
+    max-width: 40ch;
+    color: var(--ink-dark-soft);
+}
+
+.close-action .button {
+    margin-top: 1.75rem;
+}
+
+.close-support {
+    grid-column: 10 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.close-support p {
+    color: var(--ink-soft);
+}
+
+.close-support a {
+    color: var(--ink);
+    text-decoration-color: var(--gold);
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero .rise {
+        animation: rise 1000ms var(--ease-out) both;
+    }
+
+    .hero .rise + .rise {
+        animation-delay: 90ms;
+    }
+
+    .hero .statement { animation: rise-small 900ms var(--ease-out) 160ms both; }
+    .hero .support { animation: rise-small 900ms var(--ease-out) 230ms both; }
+    .hero .actions { animation: rise-small 900ms var(--ease-out) 300ms both; }
+
+    .pane-window .window {
+        animation:
+            settle 1800ms var(--ease-out) both,
+            breathe 16s ease-in-out 1800ms infinite alternate;
+    }
+
+    .hero .fact {
+        animation: rise-small 900ms var(--ease-out) both;
+    }
+
+    .hero .fact:nth-of-type(2) { animation-delay: 380ms; }
+    .hero .pane-teal { animation-delay: 450ms; }
+    .hero .pane-cyan { animation-delay: 520ms; }
+
+    @keyframes rise {
+        from { transform: translateY(0.45em); }
+    }
+
+    @keyframes rise-small {
+        from { transform: translateY(24px); }
+    }
+
+    @keyframes settle {
+        from { transform: scale(1.1) rotate(-4deg); }
+    }
+
+    @keyframes breathe {
+        to { transform: scale(1.035) rotate(1.5deg); }
+    }
+
+    @supports (animation-timeline: view()) {
+        /* Each pane rises into place as it enters, in reading order. */
+        .board:not(.hero) > .pane > *,
+        .fields > .field > :not(.tui),
+        .bands > .band > * {
+            animation: enter linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 75%;
+        }
+
+        .board:not(.hero) > .pane > :nth-child(2),
+        .fields > .field > :nth-child(2),
+        .bands > .band > :nth-child(2) { animation-range: entry 8% entry 83%; }
+        .board:not(.hero) > .pane > :nth-child(n + 3),
+        .fields > .field > :nth-child(n + 3) { animation-range: entry 16% entry 91%; }
+
+        .fields .tui {
+            animation: card linear both;
+            animation-timeline: view();
+            animation-range: entry 10% cover 40%;
+        }
+
+        /* The signature move: the Servers screen opens like a shutter. */
+        .shutter .term-scroll img {
+            animation: shutter linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 90%;
+        }
+
+        /* The window rises over the foot of the page. */
+        .foot-window img {
+            animation: dawn linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 100%;
+        }
+
+        @keyframes enter {
+            from { transform: translateY(40px); }
+        }
+
+        @keyframes card {
+            from { transform: translateY(48px) rotate(-1.5deg); }
+        }
+
+        @keyframes shutter {
+            from {
+                clip-path: inset(0 0 100% 0);
+                transform: scale(1.12);
+            }
+            to {
+                clip-path: inset(0 0 0 0);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes dawn {
+            from { transform: translateY(18%) rotate(-6deg); }
+        }
+    }
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 68rem) {
+    .hero .pane-name { grid-column: 1 / 13; min-height: 0; }
+    .hero h1 { margin-bottom: 0; }
+    .pane-window { grid-column: 1 / 13; }
+    .pane-window .window { max-width: min(30rem, 100%); }
+    .bar ul { gap: 0.25rem 1.25rem; }
+    .fact { grid-column: span 4; }
+
+    .shutter { grid-column: 1 / 13; }
+    .pane-note { grid-column: 1 / 13; }
+
+    .review-head { grid-column: 1 / 13; grid-row: auto; }
+    .review-stage { grid-column: 1 / 13; grid-row: auto; }
+    .review-parts { grid-column: 1 / 13; grid-row: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+    .review-parts legend { grid-column: 1 / -1; }
+    .review-parts label + input + label { margin-top: 0; }
+    .part-notes { grid-column: 1 / -1; }
+
+    .cell { grid-column: span 6; }
+    .cells-head h2,
+    .cells-head p,
+    .needs-head h2,
+    .needs-head p { grid-column: 1 / 13; }
+
+    .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field { min-height: 26rem; }
+
+    .pro-head { grid-column: 1 / 13; grid-row: auto; }
+    .pro-list { grid-column: 1 / 13; grid-row: auto; }
+
+    .pricing-head,
+    .choose,
+    .pricing-table { grid-column: 1 / 13; grid-row: auto; }
+    .fine-free { grid-column: 1 / 13; }
+    .fine-machines,
+    .fine-pay { grid-column: span 6; }
+
+    .need-list,
+    .limits,
+    .tested,
+    .download { grid-column: 1 / 13; }
+
+    .pane-window-crop { grid-column: 1 / 4; }
+    .close-action { grid-column: 4 / 13; }
+    .close-support { grid-column: 1 / 13; }
+
+    /* The plans table becomes one block per licence. */
+    .pricing table,
+    .pricing tbody,
+    .pricing tr,
+    .pricing th,
+    .pricing td {
+        display: block;
+    }
+
+    .pricing thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .pricing tbody {
+        display: grid;
+        gap: var(--gap);
+        background: var(--lead);
+    }
+
+    .pricing tbody tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 1.5rem;
+        padding: 2.25rem var(--pad);
+        background: var(--night);
+    }
+
+    .pricing tbody tr:nth-child(odd) {
+        background: var(--black);
+    }
+
+    .pricing tbody tr.rec {
+        background: var(--gold);
+    }
+
+    .pricing tbody th {
+        grid-column: 1 / -1;
+    }
+
+    .pricing .buy {
+        grid-column: 1 / -1;
+    }
+
+    .pricing tbody th,
+    .pricing tbody td {
+        padding: 0;
+    }
+
+    .pricing tbody th {
+        font-size: var(--s-head);
+        margin-bottom: 0.75rem;
+    }
+
+    .pricing td[data-label] {
+        padding: 0.3rem 0;
+        font-size: var(--s-body);
+    }
+
+
+    .pricing .buy {
+        margin-top: 1rem;
+        text-align: left;
+    }
+
+    .pricing .buy .button-primary {
+        width: 100%;
+    }
+
+}
+
+/* ---------- Phone ---------- */
+
+@media (max-width: 46rem) {
+    .hero .pane-name {
+        min-height: 0;
+    }
+
+    .hero h1 {
+        margin-bottom: 0;
+    }
+
+    .pane .statement {
+        margin-top: 1.5rem;
+    }
+
+    .actions .button {
+        width: 100%;
+    }
+
+    .term-scroll,
+    .review-stage {
+        padding: 0.5rem;
+    }
+
+    .pro-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .review-parts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .review-parts label {
+        min-height: 3.25rem;
+        font-size: 1.1rem;
+    }
+
+    .cells-head {
+        display: block;
+    }
+
+    .cells-head p {
+        margin-top: 1rem;
+    }
+
+    .cell {
+        min-height: 0;
+    }
+
+    .cell-flip {
+        flex-direction: column-reverse;
+    }
+
+    .frag {
+        --k: 0.72;
+        height: 11rem;
+    }
+
+    .fields {
+        grid-template-columns: 1fr;
+    }
+
+    .field {
+        min-height: 0;
+        gap: 1.25rem;
+    }
+
+    .needs-head {
+        display: block;
+    }
+
+    .needs-head p {
+        margin-top: 1rem;
+    }
+
+    .band {
+        display: block;
+    }
+
+    .band p {
+        margin-top: 0.85rem;
+        font-size: var(--s-body);
+    }
+
+    .band-head {
+        display: flex;
+        min-height: 24svh;
+    }
+
+    .pane-window-crop {
+        min-height: 9rem;
+        order: 3;
+    }
+
+    .pane-window-crop img {
+        left: 0;
+        width: 100%;
+    }
+
+    .pricing tbody tr {
+        grid-template-columns: 1fr;
+    }
+}

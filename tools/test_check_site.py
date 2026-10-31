@@ -115,13 +115,13 @@ class CheckSiteTest(unittest.TestCase):
     def test_third_party_stylesheet_fails(self):
         self.edit(
             "site/index.html",
-            '<link rel="stylesheet" href="styles.css">',
+            '<link rel="stylesheet" href="brand.css">',
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter">',
         )
         self.assertFails("from another site")
 
     def test_og_image_for_missing_file_fails(self):
-        self.edit("site/index.html", "assets/og-server-sanctuary.png", "assets/og-missing.png")
+        self.edit("site/index.html", "assets/og-home.png", "assets/og-missing.png")
         self.assertFails("names a file site/ doesn't have")
 
 
