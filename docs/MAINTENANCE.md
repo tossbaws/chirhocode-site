@@ -8,7 +8,7 @@ requests. Every page self-hosts two openly licensed fonts (below). Everything ou
 |---|---|
 | `/` home | `site/index.html` |
 | `/server-sanctuary/` sales page | `site/server-sanctuary/index.html` |
-| `/terms/` licence terms (draft) | `site/terms/index.html` |
+| `/terms/` licence terms | `site/terms/index.html` |
 | `/privacy/` | `site/privacy/index.html` |
 
 Stylesheets: `site/brand.css` holds what the family shares (fonts, colours, header, panes,
@@ -89,9 +89,10 @@ after each release:
 4. The screenshot captions, if the shots are retaken (see Asset provenance).
 
 Terms (not tied to a release): the refund window (14 days, W6) and the 2.0 rule (paid upgrade,
-discounted, W7) are decided. Once the limitation-of-liability wording is reviewed, replace its
-"To be confirmed" note in `site/terms/index.html` with the final text and remove the draft banner
-(W8 keeps it until then).
+discounted, W7) are decided. The "(draft)" label came off the title and descriptions on 2026-10-31,
+once 1.0 shipped. Once the limitation-of-liability wording is reviewed, replace its "To be
+confirmed" note in `site/terms/index.html` with the final text and drop the banner's sentence
+about it.
 
 Every product claim on the sales page comes from Server Sanctuary's README at `master` (a private
 repo) and the design docs in `~/Documents/server-sanctuary/design/`. When those change, the page
@@ -165,8 +166,10 @@ name in the window" (radio buttons that show close-ups of the mark, no script) a
   23 ("as for the Lord and not for men,"); neither text is wrong, and neither is edited.
 - **The close-ups' centres** are percentages of the mark (`--cx`, `--cy`, zoom `--z` in
   `home.css`). A new mark needs them measured again.
-- **Links to Gospel Getter** use exactly `https://tossbaws.github.io/gospel-getter/`, the URL in
-  `KNOWN_TARGETS`; a `#download` fragment would need its own entry there.
+- **Links to Gospel Getter** use exactly `https://gospelgetter.chirhocode.com/`, the URL in
+  `KNOWN_TARGETS`; a `#download` fragment would need its own entry there. Gospel Getter's site
+  moved there from `tossbaws.github.io/gospel-getter/` on 2026-10-31 (gospel-getter #171); the
+  old address 301s to it.
 - `tools/test_check_site.py` edits the home page's Open Graph image and stylesheet link to break
   it on purpose; if those lines change, update the two fixtures with them.
 
