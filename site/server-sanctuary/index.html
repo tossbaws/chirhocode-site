@@ -67,7 +67,7 @@
                     <a class="button button-gold" href="#download">Download for Linux</a>
                     <a class="link" href="#pricing">See pricing</a>
                 </div>
-                <p class="small">Version 1.0.0, released 31 October 2026.</p>
+                <p class="small">Version 1.0.1, released 31 October 2026.</p>
             </div>
             <figure class="pane pane-window">
                 <img class="window" src="../assets/brand/chi-rho-window-960.webp" srcset="../assets/brand/chi-rho-window-480.webp 480w, ../assets/brand/chi-rho-window-960.webp 960w, ../assets/brand/chi-rho-window-1600.webp 1600w" sizes="(max-width: 46rem) 92vw, 42vw" width="960" height="960" fetchpriority="high"
@@ -92,7 +92,7 @@
             <figure class="pane pane-term shutter">
                 <div class="term-scroll">
                     <a href="../assets/shots/74-servers-up-valheim.webp"><img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async"
-                         alt="The Servers screen in a terminal. The list shows ckpt-valheim marked UP on UDP ports 2456 and 2457, and ckpt-palworld stopped. The detail of the Valheim server shows its systemd user service active (running), a start checklist with image pull, warm-up, game files, game server and world loading all done, and the ready signal: game reported connected, external join not verified."></a>
+                         alt="The Servers screen in a terminal. The list shows ckpt-valheim marked UP on UDP ports 2456 and 2457, and ckpt-palworld stopped. The detail of the Valheim server shows its systemd user service active (running), a start checklist with no image pull needed, warm-up done, game files up to date, and the game server and world loading done, and the ready signal: game reported connected, external join not verified."></a>
                 </div>
                 <figcaption class="strip">The Servers screen, a Valheim server up and its start checklist done. Test machine (Ubuntu Server 26.04.1, Podman 5.7), 14 October 2026, an earlier build.</figcaption>
             </figure>
@@ -134,7 +134,7 @@
                     <p data-part="creates">The service, its unit file, the settings, the world folder and the password secret. All as you, without sudo.</p>
                     <p data-part="runs">The name players see, the ports, the pinned image, memory and CPU limits, start at boot, and the backup schedule.</p>
                     <p data-part="password">Asked next and masked. It goes only to Podman’s secret store, readable only by you, and never into the app’s files or command lines.</p>
-                    <p data-part="unchecked">Port forwarding on your router. The review says so plainly instead of letting you assume it.</p>
+                    <p data-part="unchecked">Port forwarding on your router. The review lists it so you know to set it up yourself.</p>
                 </div>
             </fieldset>
         </section>
@@ -143,7 +143,7 @@
         <section class="board cells" id="every-tier" aria-labelledby="every-tier-title">
             <div class="pane pane-emerald-deep cells-head">
                 <h2 id="every-tier-title">In every tier, Free included</h2>
-                <p>Everything that keeps a single server safe and working comes with the free tier. Pro adds convenience for people who run many.</p>
+                <p>Everything that keeps a single server safe and working comes with the free tier. Pro adds tools for people who run many servers.</p>
             </div>
             <article class="pane pane-night cell">
                 <div class="cell-text">
@@ -151,7 +151,7 @@
                     <p>systemd restarts a server that fails and brings your servers back after a reboot. One you stopped stays stopped until you start it.</p>
                 </div>
                 <div class="frag" data-ui style="--x: -588px; --y: -232px;">
-                    <img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async" alt="Detail from the Servers screen: the service server-sanctuary-vh-14 is active (running), with every start stage done.">
+                    <img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async" alt="Detail from the Servers screen: the service server-sanctuary-vh-14 is active (running), with its start checklist complete.">
                 </div>
             </article>
             <article class="pane pane-night cell cell-flip">
@@ -184,7 +184,7 @@
             <article class="pane pane-night cell">
                 <div class="cell-text">
                     <h3>Game updates on every start</h3>
-                    <p>Each time a server starts, it checks Steam for a newer game build and installs it first.</p>
+                    <p>Each time a Valheim or Palworld server starts, it checks Steam for a newer game build and installs it first.</p>
                 </div>
                 <div class="frag" data-ui style="--x: -588px; --y: -532px;">
                     <img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async" alt="The Servers screen's note on game updates: checked by the image at each start, installing a newer Valheim if Steam has one.">
@@ -227,7 +227,7 @@
         <section class="board pro" id="pro" aria-labelledby="pro-title">
             <div class="pane pane-teal-deep pro-head">
                 <h2 id="pro-title">What Pro adds</h2>
-                <p>For many servers on many machines. It never holds back the basics.</p>
+                <p>For people who run many servers on many machines.</p>
             </div>
             <div class="pane pane-night pro-list">
                 <div class="pro-row">
@@ -318,9 +318,9 @@
                 </ul>
             </div>
             <article class="pane pane-night fine fine-free">
-                <h3>The Free limit, in plain words</h3>
+                <h3>The Free limit</h3>
                 <p>Free runs up to 2 game servers on each machine, on as many machines as you like, with no key.</p>
-                <p>If a machine has more than 2 and no valid licence, say after a refund or 30 days offline, you get 24 hours’ warning. Then the 2 you pick, or the 2 oldest, keep running. The others go on a <strong>licence hold</strong>: stopped cleanly with the world saved, and kept stopped.</p>
+                <p>If a machine has more than 2 servers and its licence stops being valid (after a refund, say), you get 24 hours’ warning. After 30 days offline, the warning comes in the last 7 of those days instead. Then the 2 you pick, or the 2 oldest, keep running. The others go on a <strong>licence hold</strong>: stopped cleanly with the world saved, and kept stopped.</p>
                 <p>A held server is never deleted. You can still view it, read its log, back it up, ban players on it and remove it. The hold lifts when the machine is licensed again or is down to 2 servers.</p>
             </article>
             <article class="pane pane-night fine fine-machines">
@@ -340,7 +340,7 @@
         <section class="board needs" id="requirements" aria-labelledby="requirements-title">
             <div class="pane pane-cyan needs-head">
                 <h2 id="requirements-title">Requirements and limits</h2>
-                <p>Read this before you buy. If something here rules your setup out, the free tier will show you the same thing at no cost.</p>
+                <p>Read this before you buy. The free tier runs the same checks, so you can try it on your machine before you pay.</p>
             </div>
             <article class="pane pane-night need-list">
                 <h3>You need</h3>
@@ -355,7 +355,7 @@
                 <p>The Host check runs read-only checks for all of this. On Ubuntu Server it can install Podman and turn on linger, one step at a time after you approve each. Your password goes to <code>sudo</code>, never to the app.</p>
             </article>
             <article class="pane pane-night limits">
-                <h3>Limits, honestly</h3>
+                <h3>Limits</h3>
                 <ul>
                     <li>Linux on x86_64 only. No Windows, macOS or ARM builds.</li>
                     <li>Binaries are not code-signed. Check them against <code>SHA256SUMS</code>.</li>
@@ -384,6 +384,10 @@
                 <div>
                     <p><a class="button" data-download href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/server_sanctuary-x86_64-linux-gnu">Download for Linux x86_64</a></p>
                     <p class="small"><a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/SHA256SUMS">SHA256SUMS</a> · <a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest">Release page</a></p>
+                    <p class="small">Put both in one folder, then:</p>
+                    <pre class="install"><code><span class="prompt">$</span> sha256sum -c SHA256SUMS
+<span class="prompt">$</span> chmod +x server_sanctuary-x86_64-linux-gnu
+<span class="prompt">$</span> ./server_sanctuary-x86_64-linux-gnu</code></pre>
                 </div>
             </article>
         </section>

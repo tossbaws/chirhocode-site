@@ -80,12 +80,13 @@ to `SHA256SUMS` beside it, and to the `releases/latest` page; all three are in `
 Linux" with no version, so they stay true. What does name the version, and needs a hand edit
 after each release:
 
-1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.0.0,
+1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.0.1,
    released 31 October 2026."
-2. `site/index.html`: the Server Sanctuary product's last point, "Version 1.0.0 is out".
+2. `site/index.html`: the Server Sanctuary product's last point, "Version 1.0 is out". It names
+   the minor version only, so it changes at 1.1, not at each patch release.
 3. "What has run on a real host" on the Server Sanctuary page: update it from the README's section
    of the same name, and its closing line ("Tested in October 2026, on the builds leading up to
-   the 1.0.0 release.").
+   the 1.0.0 release."). 1.0.1 changed only the buy link, so that line still holds for it.
 4. The screenshot captions, if the shots are retaken (see Asset provenance).
 
 Terms (not tied to a release): the refund window (14 days, W6) and the 2.0 rule (paid upgrade,

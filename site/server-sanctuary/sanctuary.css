@@ -645,6 +645,22 @@ a.fact:hover {
     margin-top: 0.75rem;
 }
 
+/* The three commands that check and run the download, on the terminal's own black. */
+.install {
+    margin: 0;
+    padding: 0.875rem 1rem;
+    background: var(--term);
+    color: var(--term-ink);
+    font-size: var(--s-small);
+    line-height: 1.7;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.install code {
+    font-size: inherit;
+}
+
 /* ---------- Questions ---------- */
 
 .bands {
