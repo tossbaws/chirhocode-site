@@ -45,7 +45,7 @@ OLD_SITE_URL = "https://tossbaws.github.io/chirhocode-site/"
 # once the target exists (a public repo, a published page).
 RELEASES = "https://github.com/tossbaws/server-sanctuary-releases/releases/latest"
 KNOWN_TARGETS = {
-    "https://tossbaws.github.io/gospel-getter/",
+    "https://gospelgetter.chirhocode.com/",
     RELEASES,
     RELEASES + "/download/server_sanctuary-x86_64-linux-gnu",
     RELEASES + "/download/SHA256SUMS",
