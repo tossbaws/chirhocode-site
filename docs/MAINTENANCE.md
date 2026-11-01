@@ -44,16 +44,13 @@ another site, a link to a place we control that isn't in `KNOWN_TARGETS`
 disagrees with `checkout-links.json`, and an Open Graph URL that isn't under `SITE_URL`
 (`tools/check_site.py`) or names a file the site doesn't have.
 
-**Links stay relative.** The site is served first at a github.io project path
-(`https://tossbaws.github.io/chirhocode-site/`), then at the domain root. Relative links work in
-both; `/terms/` would break on the first.
+**Links stay relative.** The site was served first at a github.io project path
+(`https://tossbaws.github.io/chirhocode-site/`), and since 2026-10-31 at the domain root, with the
+old path redirecting. Relative links work in both; `/terms/` would break on the first.
 
 **Open Graph is the exception.** `og:url` and `og:image` must be absolute, so they name the
 address the site is published at: `SITE_URL` in `tools/check_site.py`, now
-`https://tossbaws.github.io/chirhocode-site/` (decision W8: github.io first, chirhocode.com keeps
-forwarding to Gospel Getter's site for now). When the domain points here (stage 2, step 6),
-change `SITE_URL` to `https://chirhocode.com/` and every page's `og:url` and `og:image` with it,
-in one commit.
+`https://chirhocode.com/` (stage 2, done 2026-10-31).
 
 ## Buy buttons: where the checkout URLs go
 
@@ -208,10 +205,13 @@ node ~/.claude/skills/design-taste-frontend/scripts/inspect.mjs site/server-sanc
 
 `.taste-skill/` is ignored by git.
 
-## Stage 2: publishing and the domain (not done yet)
+## Stage 2: publishing and the domain (done 2026-10-31)
 
-Nothing here is enabled yet. Step 1 alone publishes the site at its github.io address (W8); the
-rest waits until the Captain says to point the domain. In order:
+All seven steps are done: the site is at `https://chirhocode.com/`, `www` and the old github.io
+address redirect to it, and HTTPS is enforced (GitHub renews the certificate itself). The AAAA
+records were not added; the site is reached over IPv4 only, which is enough. GoDaddy note: its
+parked page shows in the DNS list as an `@` A record whose value reads "Parked", not as an
+address; it had to be deleted too. The steps, kept for reference:
 
 1. **Enable Pages:** repository Settings → Pages → Build and deployment → Source: **GitHub
    Actions**. Then run the "Website" workflow (`workflow_dispatch`) or merge a change under

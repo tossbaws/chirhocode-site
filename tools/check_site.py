@@ -2,10 +2,9 @@
 """Check the static site in site/ before it's published.
 
 Fails (exit 1) on:
-- an absolute internal link (/path, //host, or a link to SITE_URL or
-  chirhocode.com in an href or src): the site is served under a github.io
-  project path first, then at the domain root, so internal links must be
-  relative;
+- an absolute internal link (/path, //host, or a link to SITE_URL,
+  OLD_SITE_URL or chirhocode.com in an href or src): internal links stay
+  relative, so the site works at any address;
 - a relative link to a file or #fragment that doesn't exist;
 - a script, stylesheet, image or font loaded from another site;
 - a link to a place we control (our GitHub account, our github.io pages,
@@ -35,10 +34,12 @@ SITE = ROOT / "site"
 LINKS = ROOT / "checkout-links.json"
 DOMAIN = "chirhocode.com"
 # Where the site is published. Open Graph URLs must be absolute, so they
-# start with this. Until chirhocode.com points at Pages (stage 2,
-# docs/MAINTENANCE.md) it's the github.io project address; then it becomes
-# "https://chirhocode.com/", with every page's og:url and og:image.
-SITE_URL = "https://tossbaws.github.io/chirhocode-site/"
+# start with this. chirhocode.com has pointed at Pages since 2026-10-31
+# (docs/MAINTENANCE.md, stage 2); the old github.io address redirects here.
+SITE_URL = "https://chirhocode.com/"
+# Where the site was first published. It now redirects to SITE_URL, and a link
+# to it still counts as an absolute internal link.
+OLD_SITE_URL = "https://tossbaws.github.io/chirhocode-site/"
 
 # Places we control. A link to one of them must be listed here, and only
 # once the target exists (a public repo, a published page).
@@ -108,9 +109,11 @@ def parse(path):
 
 
 def is_internal_url(url):
-    """An absolute URL for this site: SITE_URL, or chirhocode.com at any path."""
+    """An absolute URL for this site: SITE_URL, OLD_SITE_URL, or chirhocode.com at any path."""
     host = (urlsplit(url).hostname or "").lower()
-    return host in (DOMAIN, "www." + DOMAIN) or url.lower().startswith(SITE_URL.lower())
+    return host in (DOMAIN, "www." + DOMAIN) or url.lower().startswith(
+        (SITE_URL.lower(), OLD_SITE_URL.lower())
+    )
 
 
 def site_file_for(path_part):

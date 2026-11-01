@@ -108,8 +108,8 @@ class CheckSiteTest(unittest.TestCase):
     def test_og_url_outside_site_url_fails(self):
         self.edit(
             "site/index.html",
-            '<meta property="og:url" content="https://tossbaws.github.io/chirhocode-site/">',
             '<meta property="og:url" content="https://chirhocode.com/">',
+            '<meta property="og:url" content="https://tossbaws.github.io/chirhocode-site/">',
         )
         self.assertFails("must be an absolute URL under")
 
