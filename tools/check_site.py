@@ -48,7 +48,9 @@ KNOWN_TARGETS = {
     "https://gospelgetter.chirhocode.com/",
     RELEASES,
     RELEASES + "/download/server_sanctuary-x86_64-linux-gnu",
+    RELEASES + "/download/server_sanctuary-aarch64-linux-gnu",
     RELEASES + "/download/SHA256SUMS",
+    RELEASES + "/download/SHA256SUMS.minisig",
 }
 
 URL_ATTRS = {"href", "src", "poster", "action"}
