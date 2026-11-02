@@ -74,19 +74,23 @@ shop's checkouts.
 ## Each Server Sanctuary release
 
 Downloads come from the public releases-only repo `tossbaws/server-sanctuary-releases` (decision
-W2). The Download section links to `releases/latest/download/server_sanctuary-x86_64-linux-gnu`,
-to `SHA256SUMS` beside it, and to the `releases/latest` page; all three are in `KNOWN_TARGETS`
-(`tools/check_site.py`) and follow each new release by themselves. The buttons say "Download for
-Linux" with no version, so they stay true. What does name the version, and needs a hand edit
+W2). The Download section links to `releases/latest/download/` for the x86_64 and aarch64
+binaries, `SHA256SUMS` and `SHA256SUMS.minisig`, and to the `releases/latest` page; all of them
+are in `KNOWN_TARGETS` (`tools/check_site.py`) and follow each new release by themselves. The
+minisign public key (key ID `0814E53E32EAC1E1`) is written out in "Check and run it"; it changes
+only if Server Sanctuary's signing key does, and must match the one in the releases repo's
+README. The buttons say "Download for Linux" with no version, so they stay true. What does name the version, and needs a hand edit
 after each release:
 
-1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.0.1,
-   released 31 October 2026."
-2. `site/index.html`: the Server Sanctuary product's last point, "Version 1.0 is out". It names
-   the minor version only, so it changes at 1.1, not at each patch release.
+1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.1.0,
+   released 1 November 2026."
+2. `site/index.html`: the Server Sanctuary product's last point, "Version 1.1 is out". It names
+   the minor version only, so it changes at 1.2, not at each patch release.
 3. "What has run on a real host" on the Server Sanctuary page: update it from the README's section
    of the same name, and its closing line ("Tested in October 2026, on the builds leading up to
-   the 1.0.0 release."). 1.0.1 changed only the buy link, so that line still holds for it.
+   the 1.0.0 release."). 1.0.1 changed only the buy link. 1.1.0's new parts (the ARM build,
+   Update now and the update schedule, app backups) are not in that list yet; the ARM build is
+   called untested under Limits.
 4. The screenshot captions, if the shots are retaken (see Asset provenance).
 
 Terms (not tied to a release): the refund window (14 days, W6) and the 2.0 rule (paid upgrade,

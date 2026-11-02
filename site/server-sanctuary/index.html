@@ -30,7 +30,7 @@
         "@type": "SoftwareApplication",
         "name": "Server Sanctuary",
         "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Linux (x86_64)",
+        "operatingSystem": "Linux (x86_64, aarch64)",
         "description": "A terminal app that runs Valheim, Palworld and custom game servers on your own Linux machine with rootless Podman and systemd, and shows every change for review first.",
         "publisher": {"@type": "Organization", "name": "Chi Rho Code LLC", "email": "help@chirhocode.com"}
     }
@@ -67,7 +67,7 @@
                     <a class="button button-gold" href="#download">Download for Linux</a>
                     <a class="link" href="#pricing">See pricing</a>
                 </div>
-                <p class="small">Version 1.0.1, released 31 October 2026.</p>
+                <p class="small">Version 1.1.0, released 1 November 2026.</p>
             </div>
             <figure class="pane pane-window">
                 <img class="window" src="../assets/brand/chi-rho-window-960.webp" srcset="../assets/brand/chi-rho-window-480.webp 480w, ../assets/brand/chi-rho-window-960.webp 960w, ../assets/brand/chi-rho-window-1600.webp 1600w" sizes="(max-width: 46rem) 92vw, 42vw" width="960" height="960" fetchpriority="high"
@@ -83,7 +83,7 @@
             </div>
             <div class="pane pane-cyan fact">
                 <span class="fact-big">Linux</span>
-                <span>on x86_64, with systemd and rootless Podman. Game servers run as your user, never as root.</span>
+                <span>on x86_64 or 64-bit ARM, with systemd and rootless Podman. Game servers run as your user, never as root.</span>
             </div>
         </section>
 
@@ -166,7 +166,7 @@
             <article class="pane pane-night cell">
                 <div class="cell-text">
                     <h3>Backups you can check</h3>
-                    <p>World backups when you ask, or daily or weekly with a number to keep. Each has a SHA-256 that is checked again before a restore.</p>
+                    <p>World backups when you ask, or daily or weekly with a number to keep. Each has a SHA-256 that is checked again before a restore. App backups keep your list of servers and settings: one is made on each upgrade, and <kbd>A</kbd> makes one any time.</p>
                 </div>
                 <div class="frag" data-ui style="--x: -240px; --y: -272px;">
                     <img src="../assets/shots/79-backups-list-valheim.webp" width="1312" height="704" loading="lazy" decoding="async" alt="The Backups dialog of ckpt-valheim: one manual backup, 160 KiB, 9 files, with its SHA-256 checked again before a restore.">
@@ -183,8 +183,8 @@
             </article>
             <article class="pane pane-night cell">
                 <div class="cell-text">
-                    <h3>Game updates on every start</h3>
-                    <p>Each time a Valheim or Palworld server starts, it checks Steam for a newer game build and installs it first.</p>
+                    <h3>Game updates, now or on a schedule</h3>
+                    <p>Each time a Valheim or Palworld server starts, it checks Steam for a newer game build and installs it first. <kbd>u</kbd> updates a server now, and <kbd>U</kbd> sets a daily or weekly time that waits while players are online.</p>
                 </div>
                 <div class="frag" data-ui style="--x: -588px; --y: -532px;">
                     <img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async" alt="The Servers screen's note on game updates: checked by the image at each start, installing a newer Valheim if Steam has one.">
@@ -345,7 +345,7 @@
             <article class="pane pane-night need-list">
                 <h3>You need</h3>
                 <ul>
-                    <li>Linux on x86_64 with glibc 2.35 or newer, such as Ubuntu 22.04 or newer.</li>
+                    <li>Linux on x86_64 or 64-bit ARM (aarch64) with glibc 2.35 or newer, such as Ubuntu 22.04 or newer.</li>
                     <li>systemd with a user session. Linger keeps servers running while you are logged out.</li>
                     <li>Rootless Podman with Quadlet (Podman 4.4 or newer) and cgroup v2.</li>
                     <li>A regular user account, not root.</li>
@@ -357,13 +357,11 @@
             <article class="pane pane-night limits">
                 <h3>Limits</h3>
                 <ul>
-                    <li>Linux on x86_64 only. No Windows, macOS or ARM builds.</li>
-                    <li>Binaries are not code-signed. Check them against <code>SHA256SUMS</code>.</li>
-                    <li>The app does not update itself. You download each new version.</li>
+                    <li>Linux only. No Windows or macOS builds.</li>
+                    <li>The ARM build hasn’t run on real ARM hardware yet. Valheim can’t be deployed on ARM, and Palworld runs there through box64 emulation, untested.</li>
+                    <li>The app does not update itself. Once a day it tells you when a new version is out, and you download it.</li>
                     <li>It does not check that players can reach your server, and it never changes your router or firewall.</li>
                     <li>Unmodded Valheim and Palworld, and custom profiles. No mods.</li>
-                    <li>Game updates are checked when a server starts. There is no Update Now button or update schedule.</li>
-                    <li>Backups hold the world only, not the app’s own list of servers. Keep your own copy of anything you can’t lose.</li>
                     <li>The Ubuntu setup steps have run on Ubuntu Server 26.04.1. 22.04 and 24.04 have not been tried yet.</li>
                 </ul>
             </article>
@@ -380,14 +378,27 @@
             </article>
             <article class="pane pane-emerald-deep download" id="download">
                 <h3>Download</h3>
-                <p>One program for Linux on x86_64. Each release comes with a <code>SHA256SUMS</code> file so you can check your download.</p>
+                <p>One program, built for x86_64 and for 64-bit ARM. Each release is signed, so you can check your download.</p>
                 <div>
                     <p><a class="button" data-download href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/server_sanctuary-x86_64-linux-gnu">Download for Linux x86_64</a></p>
-                    <p class="small"><a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/SHA256SUMS">SHA256SUMS</a> · <a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest">Release page</a></p>
-                    <p class="small">Put both in one folder, then:</p>
-                    <pre class="install"><code><span class="prompt">$</span> sha256sum -c SHA256SUMS
-<span class="prompt">$</span> chmod +x server_sanctuary-x86_64-linux-gnu
-<span class="prompt">$</span> ./server_sanctuary-x86_64-linux-gnu</code></pre>
+                    <p class="small"><a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/server_sanctuary-aarch64-linux-gnu">64-bit ARM (aarch64)</a> · <a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/SHA256SUMS">SHA256SUMS</a> · <a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest/download/SHA256SUMS.minisig">SHA256SUMS.minisig</a> · <a class="link" href="https://github.com/tossbaws/server-sanctuary-releases/releases/latest">Release page</a></p>
+                </div>
+            </article>
+            <article class="pane pane-night verify" id="verify">
+                <h3>Check and run it</h3>
+                <div class="verify-key">
+                    <p>Releases are signed with minisign, key ID <code>0814E53E32EAC1E1</code>. Save these two lines as <code>minisign.pub</code>:</p>
+                    <pre class="install"><code>untrusted comment: minisign public key 0814E53E32EAC1E1
+RWThweoyPuUUCC7h9W/6n+qHzga95k3Lxzi6kCqVoO747X+/lr3usXT+</code></pre>
+                    <p>Get minisign with <code>sudo apt-get install minisign</code> on Ubuntu 24.04 or newer. Ubuntu 22.04 has no package, so download it from <a class="link" href="https://github.com/jedisct1/minisign/releases">minisign’s releases</a>.</p>
+                </div>
+                <div class="verify-run">
+                    <p>Put it in one folder with the program, <code>SHA256SUMS</code> and <code>SHA256SUMS.minisig</code>, then:</p>
+                    <pre class="install"><code><span class="prompt">$</span> minisign -Vm SHA256SUMS -p minisign.pub
+<span class="prompt">$</span> sha256sum -c --ignore-missing SHA256SUMS
+<span class="prompt">$</span> chmod +x server_sanctuary-$(uname -m)-linux-gnu
+<span class="prompt">$</span> ./server_sanctuary-$(uname -m)-linux-gnu</code></pre>
+                    <p>The first command should print <code>Signature and comment signature verified</code>.</p>
                 </div>
             </article>
         </section>
@@ -407,7 +418,7 @@
             </div>
             <div class="band">
                 <h3>What does it send over the internet?</h3>
-                <p>One STUN request to learn your public address for the join details, kept in memory only. A licence check with Polar when the app starts and once a day. Podman pulls the game’s image, and the server downloads the game when you start it.</p>
+                <p>One STUN request to learn your public address for the join details, kept in memory only. A licence check with Polar when the app starts and once a day. When you open the app, at most once a day, it asks GitHub’s public releases list which version is the latest, so it can tell you when an update is out. That request carries only the app’s version number, never your name, licence key, machine name or any ID, and nothing is ever downloaded or installed by it. You can turn it off with <code>check_for_updates = false</code> in <code>~/.config/server-sanctuary/app.toml</code>, or by setting <code>SS_NO_UPDATE_CHECK=1</code>. Podman pulls the game’s image, and the server downloads the game when you start it.</p>
             </div>
             <div class="band">
                 <h3>Can I run mods or other games?</h3>
