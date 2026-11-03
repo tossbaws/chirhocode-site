@@ -1,8 +1,7 @@
 /* Chi Rho Code home page. Shared colours, fonts, header, panes, buttons and footer are in
    brand.css, linked before this file. The first screen is the one centred moment on the site:
    the window itself. The products follow the window's own order, emerald on the left (Gospel
-   Getter) and cyan on the right (Server Sanctuary). No scripts: the mark's close-ups use radio
-   inputs and :has(). */
+   Getter) and cyan on the right (Server Sanctuary). No scripts. */
 
 /* ---------- The first screen ---------- */
 
@@ -251,143 +250,6 @@
     color: var(--ink-soft);
 }
 
-/* ---------- The name in the window ---------- */
-
-.mark-stage {
-    grid-column: 1 / 7;
-    position: relative;
-    aspect-ratio: 1;
-    padding: 0;
-    background: #000;
-}
-
-.detail {
-    position: absolute;
-    left: calc(50% - var(--cx) * var(--z));
-    top: calc(50% - var(--cy) * var(--z));
-    width: calc(100% * var(--z));
-    max-width: none;
-    height: auto;
-    margin: 0;
-    opacity: 0;
-    transform: scale(0.94);
-    transition: opacity 500ms var(--ease-out), transform 900ms var(--ease-out);
-}
-
-.mark-stage > * + * {
-    margin-top: 0;
-}
-
-/* Centres measured on the 2048px mark: Alpha at 20.4% 50.8%, Omega at 80% 50.8%. */
-.detail-chirho { --z: 1.3; --cx: 51%; --cy: 46%; }
-.detail-alpha { --z: 3.4; --cx: 20.4%; --cy: 50.8%; }
-.detail-omega { --z: 3.4; --cx: 80%; --cy: 50.8%; }
-.detail-traces { --z: 2.6; --cx: 26%; --cy: 25%; }
-
-.mark:has(#glass-chirho:checked) .detail-chirho,
-.mark:has(#glass-alpha:checked) .detail-alpha,
-.mark:has(#glass-omega:checked) .detail-omega,
-.mark:has(#glass-traces:checked) .detail-traces {
-    opacity: 1;
-    transform: scale(1);
-}
-
-@supports not selector(:has(a)) {
-    .detail-chirho { opacity: 1; transform: none; }
-}
-
-.mark-parts {
-    grid-column: 7 / 13;
-    min-width: 0;
-    margin: 0;
-    border: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.mark-parts legend {
-    float: left;
-    width: 100%;
-    padding: 0;
-}
-
-.mark-intro {
-    clear: both;
-    padding-top: 1rem;
-    color: var(--ink-soft);
-}
-
-.mark-choices {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4px;
-    margin-top: 1.5rem;
-}
-
-.mark-choices input {
-    position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-}
-
-.mark-choices label {
-    display: flex;
-    align-items: center;
-    min-height: 3.25rem;
-    padding: 0.25rem 1rem;
-    background: var(--black);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 200ms, color 200ms, transform 200ms var(--ease-out);
-}
-
-.mark-choices label:hover {
-    background: #1b1e18;
-    transform: translateY(-2px);
-}
-
-.mark-choices input:checked + label {
-    background: var(--gold);
-    color: var(--ink-dark);
-}
-
-.mark-choices input:focus-visible + label {
-    outline: 3px solid var(--gold);
-    outline-offset: 2px;
-}
-
-.mark-notes {
-    margin-top: 1.5rem;
-    min-height: 7.5rem;
-}
-
-.mark-notes p {
-    display: none;
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    line-height: 1.4;
-}
-
-.mark-parts:not(:has(input:checked)) [data-glass="chirho"],
-.mark-parts:has(#glass-chirho:checked) [data-glass="chirho"],
-.mark-parts:has(#glass-alpha:checked) [data-glass="alpha"],
-.mark-parts:has(#glass-omega:checked) [data-glass="omega"],
-.mark-parts:has(#glass-traces:checked) [data-glass="traces"] {
-    display: block;
-    animation: note-in 400ms var(--ease-out);
-}
-
-@keyframes note-in {
-    from { transform: translateY(8px); }
-}
-
-@supports not selector(:has(a)) {
-    .mark-notes p { display: block; }
-    .mark-notes p + p { margin-top: 0.75rem; }
-}
-
 /* ---------- Contact ---------- */
 
 .contact-main {
@@ -531,9 +393,5 @@
     .practice {
         grid-template-columns: 1fr;
         gap: 0.5rem;
-    }
-
-    .mark-choices label {
-        min-height: 3.5rem;
     }
 }
