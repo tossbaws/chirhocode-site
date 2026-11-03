@@ -79,19 +79,16 @@ binaries, `SHA256SUMS` and `SHA256SUMS.minisig`, and to the `releases/latest` pa
 are in `KNOWN_TARGETS` (`tools/check_site.py`) and follow each new release by themselves. The
 minisign public key (key ID `0814E53E32EAC1E1`) is written out in "Check and run it"; it changes
 only if Server Sanctuary's signing key does, and must match the one in the releases repo's
-README. The buttons say "Download for Linux" with no version, so they stay true. What does name the version, and needs a hand edit
-after each release:
+README. The buttons say "Download for Linux" with no version, so they stay true. What does name
+the version, and needs a hand edit after each release:
 
-1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.1.0,
-   released 1 November 2026."
-2. `site/index.html`: the Server Sanctuary product's last point, "Version 1.1 is out". It names
-   the minor version only, so it changes at 1.2, not at each patch release.
-3. "What has run on a real host" on the Server Sanctuary page: update it from the README's section
-   of the same name, and its closing line ("Tested in October 2026, on the builds leading up to
-   the 1.0.0 release."). 1.0.1 changed only the buy link. 1.1.0's new parts (the ARM build,
-   Update now and the update schedule, app backups) are not in that list yet; the ARM build is
-   called untested under Limits.
-4. The screenshot captions, if the shots are retaken (see Asset provenance).
+1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.1.0"
+   (no date, since the 2026-11-02 trim).
+2. The screenshot captions, if the shots are retaken (see Asset provenance).
+
+Since the 2026-11-02 trim the site has no "Limits" list, no "What has run on a real host"
+section and no version line on the home page. The ARM note under Requirements stays until the
+ARM build has run on real hardware.
 
 Terms (not tied to a release): the refund window (14 days, W6) and the 2.0 rule (paid upgrade,
 discounted, W7) are decided. The "(draft)" label came off the title and descriptions on 2026-10-31,
@@ -137,8 +134,9 @@ cropped, recoloured or edited.
 The OFL allows self-hosting and redistribution with the licence kept beside the files. The
 Latin subsets have no Greek: write "Alpha" and "Omega" in words, not the letters.
 
-All four shots predate the 1.0.0 release (the Servers list is now a table), so their captions
-say "an earlier build". Retake them from a release build and update this table and the captions.
+All four shots predate the 1.0.0 release (the Servers list is now a table). Since the
+2026-11-02 trim their captions no longer say so. Retake them from a release build and update this
+table and the captions.
 
 ## Colours and accessibility
 
@@ -161,7 +159,7 @@ Primary button text `#1a140e` on gold: 10.8. Focus ring: 3 px gold. Every page h
 The first screen is the one centred moment on the site: the window itself, the tagline as
 the `h1` ("Agent-built. People-first. AI-ready.", since 2026-11-02), 1 Peter 4:10 under it in
 place of a sentence about the company, and two actions. Then the two products in the window's own order (Gospel Getter on emerald, left;
-Server Sanctuary on teal, right), "Why we build" with four practices and Colossians 3:23-24, "The
+Server Sanctuary on teal, right), "Why we build" with three practices and Colossians 3:23-24, "The
 name in the window" (radio buttons that show close-ups of the mark, no script) and contact.
 
 - **Scripture on the page.** 1 Peter 4:10 (first screen) was copied the same way from the same
