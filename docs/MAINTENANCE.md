@@ -158,13 +158,14 @@ Primary button text `#1a140e` on gold: 10.8. Focus ring: 3 px gold. Every page h
 
 ## The home page (design of 2026-10-31)
 
-The first screen is the one centred moment on the site: the window itself, the mission as the
-`h1` ("Software made well, for the glory of God."), one sentence saying what the company is, and
-two actions. Then the two products in the window's own order (Gospel Getter on emerald, left;
+The first screen is the one centred moment on the site: the window itself, 1 Peter 4:10 above
+the tagline, the tagline as the `h1` ("Agent-built. People-first. AI-ready.", since 2026-11-02),
+one sentence saying what the company is, and two actions. Then the two products in the window's own order (Gospel Getter on emerald, left;
 Server Sanctuary on teal, right), "Why we build" with four practices and Colossians 3:23-24, "The
 name in the window" (radio buttons that show close-ups of the mark, no script) and contact.
 
-- **Scripture on the page.** Colossians 3:23-24 is quoted exactly from the World English Bible
+- **Scripture on the page.** 1 Peter 4:10 (first screen) was copied the same way from the same
+  file on 2026-11-02. Colossians 3:23-24 is quoted exactly from the World English Bible
   that Gospel Getter ships (`src-tauri/data/web.json` in tossbaws/gospel-getter), so the company
   site and the product read the same. It was copied from that file, not retyped, on 2026-10-31.
   Never retype or edit it. eBible.org's current edition (`engwebp`) has one comma fewer in verse
