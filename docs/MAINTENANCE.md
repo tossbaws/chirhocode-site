@@ -158,9 +158,9 @@ Primary button text `#1a140e` on gold: 10.8. Focus ring: 3 px gold. Every page h
 
 ## The home page (design of 2026-10-31)
 
-The first screen is the one centred moment on the site: the window itself, 1 Peter 4:10 above
-the tagline, the tagline as the `h1` ("Agent-built. People-first. AI-ready.", since 2026-11-02),
-one sentence saying what the company is, and two actions. Then the two products in the window's own order (Gospel Getter on emerald, left;
+The first screen is the one centred moment on the site: the window itself, the tagline as
+the `h1` ("Agent-built. People-first. AI-ready.", since 2026-11-02), 1 Peter 4:10 under it in
+place of a sentence about the company, and two actions. Then the two products in the window's own order (Gospel Getter on emerald, left;
 Server Sanctuary on teal, right), "Why we build" with four practices and Colossians 3:23-24, "The
 name in the window" (radio buttons that show close-ups of the mark, no script) and contact.
 
