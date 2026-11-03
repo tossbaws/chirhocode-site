@@ -606,26 +606,18 @@ a.fact:hover {
     margin: 0;
 }
 
-.need-list { grid-column: 1 / 6; }
-
-.limits { grid-column: 6 / 13; }
-
-.limits ul {
-    columns: 2 18rem;
-    column-gap: 2.5rem;
-}
-
-.limits li {
-    break-inside: avoid;
-}
-
-.tested { grid-column: 1 / 9; }
+.need-list { grid-column: 1 / 9; }
 
 .download {
     grid-column: 9 / 13;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+}
+
+/* The button and its links sit at the foot of the pane, level with the end of the list. */
+.download > div {
+    margin-top: auto;
+    padding-top: 1.5rem;
 }
 
 .needs article li {
@@ -925,8 +917,6 @@ a.fact:hover {
     .fine-pay { grid-column: span 6; }
 
     .need-list,
-    .limits,
-    .tested,
     .download { grid-column: 1 / 13; }
     .verify { grid-template-columns: minmax(0, 1fr); }
     .verify h3 { grid-column: auto; }

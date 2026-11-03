@@ -67,7 +67,7 @@
                     <a class="button button-gold" href="#download">Download for Linux</a>
                     <a class="link" href="#pricing">See pricing</a>
                 </div>
-                <p class="small">Version 1.1.0, released 1 November 2026.</p>
+                <p class="small">Version 1.1.0</p>
             </div>
             <figure class="pane pane-window">
                 <img class="window" src="../assets/brand/chi-rho-window-960.webp" srcset="../assets/brand/chi-rho-window-480.webp 480w, ../assets/brand/chi-rho-window-960.webp 960w, ../assets/brand/chi-rho-window-1600.webp 1600w" sizes="(max-width: 46rem) 92vw, 42vw" width="960" height="960" fetchpriority="high"
@@ -94,12 +94,11 @@
                     <a href="../assets/shots/74-servers-up-valheim.webp"><img src="../assets/shots/74-servers-up-valheim.webp" width="1312" height="704" loading="lazy" decoding="async"
                          alt="The Servers screen in a terminal. The list shows ckpt-valheim marked UP on UDP ports 2456 and 2457, and ckpt-palworld stopped. The detail of the Valheim server shows its systemd user service active (running), a start checklist with no image pull needed, warm-up done, game files up to date, and the game server and world loading done, and the ready signal: game reported connected, external join not verified."></a>
                 </div>
-                <figcaption class="strip">The Servers screen, a Valheim server up and its start checklist done. Test machine (Ubuntu Server 26.04.1, Podman 5.7), 14 October 2026, an earlier build.</figcaption>
+                <figcaption class="strip">The Servers screen, a Valheim server up and its start checklist done.</figcaption>
             </figure>
             <div class="pane pane-night pane-note">
                 <h2 id="screen-title">What’s really running</h2>
                 <p>The Servers screen reads systemd and the game’s own log lines, and says what it saw. <strong>UP</strong> means the game reported it is connected.</p>
-                <p>It also tells you what it has not checked: whether players outside your network can get in.</p>
             </div>
         </section>
 
@@ -129,7 +128,7 @@
                 <input type="radio" name="part" id="part-unchecked">
                 <label for="part-unchecked">Not checked</label>
                 <div class="part-notes" aria-live="polite">
-                    <p data-part="all">A real review from a test machine on 14 October 2026. Pick a part to read it on its own.</p>
+                    <p data-part="all">Pick a part to read it on its own.</p>
                     <p data-part="checked">The host is ready, there is memory for the game, and its UDP ports are free.</p>
                     <p data-part="creates">The service, its unit file, the settings, the world folder and the password secret. All as you, without sudo.</p>
                     <p data-part="runs">The name players see, the ports, the pinned image, memory and CPU limits, start at boot, and the backup schedule.</p>
@@ -253,7 +252,7 @@
         <section class="board pricing" id="pricing" aria-labelledby="pricing-title">
             <div class="pane pane-black pricing-head">
                 <h2 id="pricing-title">Pay once</h2>
-                <p>One-time prices, not subscriptions, for one person each. A licence covers every 1.x release. 2.0 will be a paid upgrade, discounted for owners.</p>
+                <p>One-time prices, not subscriptions, for one person each. A licence covers every 1.x release.</p>
             </div>
             <div class="pane pane-black pricing-table">
                 <table>
@@ -320,13 +319,11 @@
             <article class="pane pane-night fine fine-free">
                 <h3>The Free limit</h3>
                 <p>Free runs up to 2 game servers on each machine, on as many machines as you like, with no key.</p>
-                <p>If a machine has more than 2 servers and its licence stops being valid (after a refund, say), you get 24 hours’ warning. After 30 days offline, the warning comes in the last 7 of those days instead. Then the 2 you pick, or the 2 oldest, keep running. The others go on a <strong>licence hold</strong>: stopped cleanly with the world saved, and kept stopped.</p>
-                <p>A held server is never deleted. You can still view it, read its log, back it up, ban players on it and remove it. The hold lifts when the machine is licensed again or is down to 2 servers.</p>
+                <p><a class="link" href="../terms/#fall-back">What happens when a licence runs out</a></p>
             </article>
             <article class="pane pane-night fine fine-machines">
                 <h3>Licences and machines</h3>
-                <p>Adding your key to a machine uses one of its machine slots. The app checks the licence with Polar when it starts and once a day, and keeps working offline for 30 days after a successful check.</p>
-                <p>To move a licence, release the machine in the app, from 7 days after it took the slot. Lost or wiped a machine that holds one? Email us and we free it.</p>
+                <p>Adding your key to a machine uses one of its machine slots. You can move a licence to another machine from inside the app.</p>
             </article>
             <article class="pane pane-night fine fine-pay">
                 <h3>Payment and refunds</h3>
@@ -336,16 +333,16 @@
             </article>
         </section>
 
-        <!-- Requirements and limits. -->
+        <!-- Requirements. -->
         <section class="board needs" id="requirements" aria-labelledby="requirements-title">
             <div class="pane pane-cyan needs-head">
-                <h2 id="requirements-title">Requirements and limits</h2>
-                <p>Read this before you buy. The free tier runs the same checks, so you can try it on your machine before you pay.</p>
+                <h2 id="requirements-title">Requirements</h2>
+                <p>The free tier runs the same checks, so you can try it on your machine before you pay.</p>
             </div>
             <article class="pane pane-night need-list">
                 <h3>You need</h3>
                 <ul>
-                    <li>Linux on x86_64 or 64-bit ARM (aarch64) with glibc 2.35 or newer, such as Ubuntu 22.04 or newer.</li>
+                    <li>Linux on x86_64 or 64-bit ARM (aarch64) with glibc 2.35 or newer, such as Ubuntu 22.04 or newer. There are no Windows or macOS builds.</li>
                     <li>systemd with a user session. Linger keeps servers running while you are logged out.</li>
                     <li>Rootless Podman with Quadlet (Podman 4.4 or newer) and cgroup v2.</li>
                     <li>A regular user account, not root.</li>
@@ -353,28 +350,7 @@
                     <li>Enough memory for your games. Each deployment is checked against the machine’s free memory first.</li>
                 </ul>
                 <p>The Host check runs read-only checks for all of this. On Ubuntu Server it can install Podman and turn on linger, one step at a time after you approve each. Your password goes to <code>sudo</code>, never to the app.</p>
-            </article>
-            <article class="pane pane-night limits">
-                <h3>Limits</h3>
-                <ul>
-                    <li>Linux only. No Windows or macOS builds.</li>
-                    <li>The ARM build hasn’t run on real ARM hardware yet. Valheim can’t be deployed on ARM, and Palworld runs there through box64 emulation, untested.</li>
-                    <li>The app does not update itself. Once a day it tells you when a new version is out, and you download it.</li>
-                    <li>It does not check that players can reach your server, and it never changes your router or firewall.</li>
-                    <li>Unmodded Valheim and Palworld, and custom profiles. No mods.</li>
-                    <li>The Ubuntu setup steps have run on Ubuntu Server 26.04.1. 22.04 and 24.04 have not been tried yet.</li>
-                </ul>
-            </article>
-            <article class="pane pane-night tested">
-                <h3>What has run on a real host</h3>
-                <ul>
-                    <li>On an Ubuntu VPS: deploy, first start, a player joining, a clean save on stop, the world kept across a restart, and removal.</li>
-                    <li>On a test machine: Valheim and Palworld end to end, with players joining on the local network and their settings reaching both games.</li>
-                    <li>Host reboots: servers saved cleanly on shutdown and came back at boot with nobody logged in. A server you stopped stayed stopped.</li>
-                    <li>Bans enforced by both games, bulk settings across four servers, and the Players screen with real joins.</li>
-                    <li>A custom game server, the Minecraft Bedrock example, started and ran. A real player join on it is still unproven.</li>
-                </ul>
-                <p class="small">Tested in October 2026, on the builds leading up to the 1.0.0 release.</p>
+                <p>The ARM build hasn’t run on real ARM hardware yet. Valheim can’t be deployed on ARM, and Palworld runs there through box64 emulation, untested.</p>
             </article>
             <article class="pane pane-emerald-deep download" id="download">
                 <h3>Download</h3>
@@ -414,11 +390,11 @@ RWThweoyPuUUCC7h9W/6n+qHzga95k3Lxzi6kCqVoO747X+/lr3usXT+</code></pre>
             </div>
             <div class="band">
                 <h3>How do my friends join?</h3>
-                <p>Each server’s detail shows how to join: your local address and port for players at home, and your public address with the ports to forward on your router for everyone else. With Valheim’s crossplay on, it shows the join code too. Port forwarding is up to you, and the app can’t check that players get in.</p>
+                <p>Each server’s detail shows how to join: your local address and port for players at home, and your public address with the ports to forward on your router for everyone else. With Valheim’s crossplay on, it shows the join code too.</p>
             </div>
             <div class="band">
                 <h3>What does it send over the internet?</h3>
-                <p>One STUN request to learn your public address for the join details, kept in memory only. A licence check with Polar when the app starts and once a day. When you open the app, at most once a day, it asks GitHub’s public releases list which version is the latest, so it can tell you when an update is out. That request carries only the app’s version number, never your name, licence key, machine name or any ID, and nothing is ever downloaded or installed by it. You can turn it off with <code>check_for_updates = false</code> in <code>~/.config/server-sanctuary/app.toml</code>, or by setting <code>SS_NO_UPDATE_CHECK=1</code>. Podman pulls the game’s image, and the server downloads the game when you start it.</p>
+                <p>A STUN request to learn your public address, a licence check with Polar once you add a key, and a daily check for a new version, plus the game downloads themselves. The <a class="link" href="../privacy/#app">privacy page</a> lists each one, and how to turn the version check off.</p>
             </div>
             <div class="band">
                 <h3>Can I run mods or other games?</h3>
@@ -427,10 +403,6 @@ RWThweoyPuUUCC7h9W/6n+qHzga95k3Lxzi6kCqVoO747X+/lr3usXT+</code></pre>
             <div class="band">
                 <h3>Why is there a Bible verse at the bottom of the screen?</h3>
                 <p>Chi Rho Code is a Christian company. When the status line has nothing else to say, it shows a short verse from the World English Bible: <kbd>p</kbd> pauses it, <kbd>n</kbd> skips to the next. A notice, an error or progress always takes its place.</p>
-            </div>
-            <div class="band">
-                <h3>What happens when 2.0 comes out?</h3>
-                <p>Your licence keeps covering every 1.x release. 2.0 will be a paid upgrade with a discount for existing owners, set when 2.0 is announced.</p>
             </div>
         </section>
 
