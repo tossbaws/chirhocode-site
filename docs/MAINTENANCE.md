@@ -82,7 +82,7 @@ only if Server Sanctuary's signing key does, and must match the one in the relea
 README. The buttons say "Download for Linux" with no version, so they stay true. What does name
 the version, and needs a hand edit after each release:
 
-1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.1.0"
+1. `site/server-sanctuary/index.html`: the line under the first screen's buttons, "Version 1.1.1"
    (no date, since the 2026-11-02 trim).
 2. The screenshot captions, if the shots are retaken (see Asset provenance).
 
@@ -90,7 +90,9 @@ Since the 2026-11-02 trim the site has no "Limits" list, no "What has run on a r
 section and no version line on the home page. The ARM note under Requirements stays until the
 ARM build has run on real hardware.
 
-Terms (not tied to a release): the refund window (14 days, W6) and the 2.0 rule (paid upgrade,
+Terms (not tied to a release): the refund window (14 days, W6; since 2026-11-03 the refund is
+the amount paid minus the payment-processing fee Polar keeps, issued as a partial refund from
+Polar's order page) and the 2.0 rule (paid upgrade,
 discounted, W7) are decided. The "(draft)" label came off the title and descriptions on 2026-10-31,
 once 1.0 shipped. Once the limitation-of-liability wording is reviewed, replace its "To be
 confirmed" note in `site/terms/index.html` with the final text and drop the banner's sentence
